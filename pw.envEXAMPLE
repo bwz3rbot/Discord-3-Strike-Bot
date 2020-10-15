@@ -1,0 +1,11 @@
+TOKEN=''
+CHANNEL_NAME="command-channel"
+COMMAND_PREFIX="!"
+ACTIVITY_TYPE="WATCHING"
+ACTIVITY_NAME="you! 👀"
+SET_USERNAME="⚾ThreeStrikeBot🤖"
+ADMIN_ROLE_NAME="admin"
+GUEST_ADMIN_ROLE_NAME="Guest Admin"
+TAG_ME_CHANNEL="tag-me"
+TAG_COMMAND="tag"
+ROLE_TO_ASSIGN="user"
