@@ -87,7 +87,7 @@ ROLE_TO_ASSIGN="user"
 
 # Installing <a name = "installing"></a>
 
-First, you must install Node.js and MongoDB. Official download links for Node can be found [here](https://nodejs.org/en/download/). And MongoDB [Here](https://docs.mongodb.com/manual/administration/install-community/).
+First, you must install Node.js and MongoDB. Official download links for Node can be found [here](https://nodejs.org/en/download/). And MongoDB [here](https://docs.mongodb.com/manual/administration/install-community/).
 
 To check that node and mongo have been installed correctly run these commands:
 ```
@@ -144,7 +144,7 @@ $ ./run.sh
 
 # Backing Up Your Data <a name = "backup"></a>
 
-It's strongly recommended that you back up your database! That is where all your user data is stored and if anything happens to it, its not going to be a good time for your server. Luckily it's very easy to just copy the database directory from the folder to another and keep it safe. If anything happens to your bot's database, just delete the corrupt one and paste in the backup. It should all work out just fine. <strong>You should also note that you should never attempt this while the database is running. The files will not be correctly copied and will possibly destroy your data.</strong> Any questions or comments can be sent to [u/bwz3r](https://reddit.com/u/bwz3r) or Bingo-Bango-Botto#7079. Thank you!
+It's strongly recommended that you back up your database! That is where all your user data is stored and if anything happens to it, its not going to be a good time for your server. Luckily it's very easy to just copy the database directory from the folder to another and keep it safe. If anything happens to your bot's database, just delete the corrupt one and paste in the backup. It should all work out just fine. <strong>You should also note that you should never attempt this while the database is running. The files will not be correctly copied and will possibly destroy your data.</strong>
 
 
 
