@@ -92,8 +92,8 @@ The environment variables listed below are stored in your __pw.env__ file. You w
 <strong>TAG_ME_CHANNEL</strong> The name of the channel for the tag-me function to run on.\
 <strong>TAG_COMMAND</strong> A name for the tag-me command to listen for. Should be set to something similar to 'agree' if you're having your users read a set of rules, or something more specific to your sub. It must be a single word command. It receives no arguments. This function __will not be limited to admin use like the others.__\
 <strong>ROLE_TO_ASSIGN</strong> The name of the role assigned by the tag-me command. This named role is used to grant access to your server. Its primary purpose is to have your users agree to a set of instructions before being allowed access to the rest of your content.\
-<strong>WELCOME_MESSAGE</strong> A brief message that will be sent to the tag-me channel after a user is given a role.
-<strong>WELCOME_MESSAGE</strong> A message that will be displayed to users who attempt to use the `tag` command while being in the list users previously kicked from the guild.
+<strong>WELCOME_MESSAGE</strong> A brief message that will be sent to the tag-me channel after a user is given a role.\
+<strong>UNWELCOME_MESSAGE</strong> A message that will be displayed to users who attempt to use the `tag` command while being in the list users previously kicked from the guild.
 
 <strong>If you do not wish to use the tag-me function, simply set the TAG_ME_CHANNEL variable to a channel name that does not exist within your server and the bot will overlook it. Enabling the tag-me channel for your server is explained in the [final section](https://github.com/web-temps/Discord-3-Strike-Bot#tag-me-) of this guide.</strong><br>
 
