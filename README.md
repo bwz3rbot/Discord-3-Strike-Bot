@@ -282,9 +282,9 @@ To remove a user from the database of users previously kicked through the `warn`
 !unkick <@username>
 ```
 
-To access the `help` embed with a list of commands, just send an empty command prefix:
+To access the `help` embed with a list of commands, use the `help` command:
 ```
-!
+!help
 ```
 # Example Output<a name="example"></a>
 <br>

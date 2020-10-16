@@ -32,7 +32,7 @@ async function on(message, client) {
                 }
             }
         }
-    } 
+    }
 }
 
 const channelFilter = function (channel) {
@@ -111,7 +111,7 @@ async function channelCommands(command, message, client) {
             }
             break;
 
-        default:
+        case "help":
             const helpEmbed = await EmbedBuilder.helpEmbed([{
                 syntax: `\`${process.env.COMMAND_PREFIX}warn <@username> <reason>\``,
                 description: `gives a user a warning and a strike`

@@ -47,5 +47,5 @@ This bot allows for an administrator to set a custom command prefix. This means 
 `$unkick <@username>`
 
 ## Help <a name = "warn.help"></a>
-### To access the help embed, just send an empty command prefix:
-`$`
+### To access the help embed, use the `help` command:
+`$help`
