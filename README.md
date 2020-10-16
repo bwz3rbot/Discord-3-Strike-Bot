@@ -18,7 +18,9 @@
 
 # About <a name = "about"></a>
 
-This Discord bot will scan a user defined channel for commands. It only accepts commands from users with an administrative roles in your server. It allows for two seperate roles to use the bot. It comes with a *tag-me* feature which allows you to have a welcome message or landing page for your server. It scans a tag-me channel to assign users a base user role, allowing them access to the rest of your sub.
+This Discord bot will scan a set of user defined channels for commands. It only accepts commands from users with administrative roles on your server. It allows for two seperate roles to use the bot. Administrators of the server may call on the bot to give users a *warning* in the form of a message embed. 3 seperate warnings without having been pardoned will result in an instant kick from the server. An administrator can also use the bot to *pardon* a user of their strikes at any time. This pardon function resets strikes to 0.
+
+The bot also comes with a *tag-me* feature which allows you to have a welcome message or landing page for your server. It scans a tag-me channel to assign users a base user role, allowing them access to the rest of your content. If you decide you do not wish to use this feature, you may simply edit the environment variable TAG_ME_CHANNEL to equal a channel name that does not exist within your server.
 
 # Getting Started <a name = "getting_started"></a>
 
