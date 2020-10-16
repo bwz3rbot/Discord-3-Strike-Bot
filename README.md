@@ -61,7 +61,7 @@ The first step in installing and using a bot is creating an application in the [
 <br>
 <br>
 
-4. Now `Click to Reveal Token`. You'll need this token to authenticate your bot in the next step.
+4. Now `Click to Reveal Token`. You'll need to paste this token into your pw.env file (which will be explained later on in this guide).
 
 <img src='https://i.imgur.com/X115w03.png'>
 <br>
@@ -69,7 +69,7 @@ The first step in installing and using a bot is creating an application in the [
 <br>
 <br>
 
-<strong>Never share this token with anyone! It is used to authenticate your bot! It is your bot's password.</strong> Anyone with access to this token will have *full* control over the bot. That means that if you have granted the bot an admin role on your server (which you would need to in order for it to work), __anyone with access to your token will have admin rights on your server__. If your bots password ever does get out, you may simply go back to the [Developer Portal](https://discord.com/developers/applications) on your bot's page and click the button to _regenerate_ a new token for your bot. Paste it back into your `pw.env` file (which will be explained in detail below) and you'll be good to go!
+<strong>Never share this token with anyone! It is used to authenticate your bot! It is your bot's password.</strong> Anyone with access to this token will have *full* control over the bot. That means that if you have granted the bot an admin role on your server (which you would need to in order for it to work), __anyone with access to your token will have admin rights on your server__. If you ever happen to lose your token, you may go back to the [Developer Portal](https://discord.com/developers/applications) on your bot's page and click the button to _regenerate_ a new one. Paste it into your `pw.env` file and you'll be good to go!
 
 # Inviting The Bot To Your Server <a name="invite"></a>
 Follow these instructions on how to format your invite link: https://discordjs.guide/preparations/adding-your-bot-to-servers.html#bot-invite-links
