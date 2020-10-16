@@ -5,6 +5,8 @@
 - [About](#about)
 - [Getting Started](#getting_started)
     - [Prerequisites](#getting_started)
+    - [Inviting The Bot To Your Server](#invite)
+    - [Granting Permissions](#perms)
     - [Environment Variables](#env_var)
     - [Installing](#installing)
 - [Running](#running)
@@ -31,7 +33,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 # Prerequisites <a name = "pres"></a>
 
-This bot runs on Node.js with a MongoDB database. Be sure that you download and install both of these products carefully and correctly. The install procedures of both are rather straightforward, especially for Windows users. See below for links to the downloads:
+This bot runs on Node.js and uses a MongoDB database. You'll need to download and install both before moving on.
 
 \
 [Official MongoDB Download and Installation Instructions](https://docs.mongodb.com/manual/administration/install-community/)\
@@ -39,7 +41,7 @@ This bot runs on Node.js with a MongoDB database. Be sure that you download and 
 
 -----
 \
-Once you have Mongo and Node installed on your system, Head on over to the [Discord Developer Portal](https://discord.com/developers/applications) and create a new application.
+Once you have Mongo and Node installed on your system, head on over to the [Discord Developer Portal](https://discord.com/developers/applications) and create a new application.
 
 <br>
 
@@ -67,11 +69,35 @@ Once you have Mongo and Node installed on your system, Head on over to the [Disc
 4. Now `Click to Reveal Token`. You'll need this token to authenticate your bot in the next step.
 
 <img src='https://i.imgur.com/X115w03.png'>
+<br>
 
 <br>
 <br>
 
-<strong>Never share this token with anyone! It is used to authenticate your bot! Basically it is your bot's password.</strong> Anyone with access to this token will have *full* control of the bot. That means that if you have granted the bot an admin role on your server (which you would need to for it to work), __anyone with access to your token will have admin rights on your server__. You can probably imagine that this is not something you really want to happen! No problem, though as if the token ever does in fact become leaked, you may simply go back to the [Developer Portal](https://discord.com/developers/applications) on your bot's page and click the button to __*regenerate*__ a new token for your bot. Paste it back into your `pw.env` file (which is explained below) and you're good to go!
+<strong>Never share this token with anyone! It is used to authenticate your bot! It is your bot's password.</strong> Anyone with access to this token will have *full* control over the bot. That means that if you have granted the bot an admin role on your server (which you would need to for it to work), __anyone with access to your token will have admin rights on your server__. You can probably imagine that this is not something you really want to happen! No problem, though as if the token ever does in fact become leaked, you may simply go back to the [Developer Portal](https://discord.com/developers/applications) on your bot's page and click the button to __*regenerate*__ a new token for your bot. Paste it back into your `pw.env` file (which is explained below) and you're good to go!
+
+# Inviting The Bot To Your Server <a name="invite"></a>
+Follow these instructions on how to format your invite link: https://discordjs.guide/preparations/adding-your-bot-to-servers.html#bot-invite-links
+
+You'll find your client id back in the Developer Portal under the __General Information__ tab.
+Once you have your invite link, you can simply paste it into the browser and invite the bot to your server.
+
+Your invite link should look something like this:
+```
+https://discord.com/oauth2/authorize?client_id=123456789012345678&scope=bot
+```
+
+# Granting Permissions <a name="perms"></a>
+Once you've invited the bot to your server, create a new role. Name it something along the lines of [B O T].
+
+__This bot requires the following permissions to run:__
+
+- __Kick Members__ :heavy_check_mark:
+- __Read Text Channels & See Voice Channels__ :heavy_check_mark:
+- __Send Messages__ :heavy_check_mark:
+- __Embed Links__ :heavy_check_mark:
+- __Read Message History__ :heavy_check_mark:
+- __Mention @everyone, @here and All Roles__ :heavy_check_mark:
 
 # Environment Variables <a name = "env_var"></a>
 
