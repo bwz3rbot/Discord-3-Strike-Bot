@@ -33,15 +33,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 # Prerequisites <a name = "pres"></a>
 
-This project runs on Node.js and uses a MongoDB database. You'll need to download and install both before moving on.
-
-\
-[Official MongoDB Download and Installation Instructions](https://docs.mongodb.com/manual/administration/install-community/)\
-[Official Node.JS Download](https://nodejs.org/en/download/)
 
 -----
 \
-Once you have Mongo and Node installed on your system, head on over to the [Discord Developer Portal](https://discord.com/developers/applications) and create a new application.
+The first step in installing and using a bot is creating an application in the [Discord Developer Portal](https://discord.com/developers/applications).
 
 <br>
 
@@ -147,7 +142,9 @@ UNWELCOME_MESSAGE="You are not welcome here."
 
 # Installing <a name = "installing"></a>
 
-First, you must install Node.js and MongoDB. You can use the official download links to get [Node.js here](https://nodejs.org/en/download/) and [MongoDB here](https://docs.mongodb.com/manual/administration/install-community/).
+
+This project runs on Node.js and uses a MongoDB database. You'll need to download and install both before moving on.
+You can use the official download links to get [Node.js here](https://nodejs.org/en/download/) and [MongoDB here](https://docs.mongodb.com/manual/administration/install-community/).
 
 To check that Node and Mongo have been correctly installed, run these commands:
 ```
