@@ -74,12 +74,12 @@ Once you have Mongo and Node installed on your system, Head on over to the [Disc
 
 This bot is ***highly customizable***
 -----
-The environment variables listed below are stored in your `pw.env` file. You will notice a single file that exists within the root directory of this codebase called __pw.envEXAMPLE.__ Here is where you can customize your bot. The only requirements are that you input the correct token for your bot and ACTIVITY_TYPE is limited to only 3 choices. But other than that, you have a number of variables to choose from to make the bot fit your server's personality a bit more. See below for definitions of what they all mean.
+The environment variables listed below are stored in your __pw.env__ file. You will notice a single file that exists within the root directory of this codebase called __pw.envEXAMPLE.__ Here is where you can customize your bot. The only requirements are that you input the correct token for your bot and ACTIVITY_TYPE is limited to only 3 choices. But other than that, you have a number of variables to choose from to make the bot fit your server's personality a bit more. See below for definitions of what they all mean.
 
 -----
 
 <strong>TOKEN</strong> Taken from the [Developer Portal](https://discord.com/developers/applications) when you created your app.\
-<strong>LIMIT_TO_CHANNELS</strong> The names of every you wish the bot to listen for commands on. This variable must formatted as a list seperated by commas.\
+<strong>LIMIT_TO_CHANNELS</strong> The names of channel every you wish the bot to listen for commands on. This variable must formatted as a list seperated by commas.\
 <strong>COMMAND_PREFIX</strong> A single character you wish to prefix commands with.\
 <strong>ACTIVITY_TYPE</strong> Must be set to either PLAYING, LISTENING or WATCHING for the bot to function correctly as defined [here](https://discord.js.org/#/docs/main/stable/typedef/ActivityType). The bot __does not allow__ for a user to use the STREAMING or CUSTOM_STATUS activity types.\
 <strong>ACTIVITY_NAME</strong> Displays along with the activity type.\
@@ -96,7 +96,7 @@ The environment variables listed below are stored in your `pw.env` file. You wil
 _____
 ### Below is an example of how you should fill out your environment variables.
 
-This exact file can be found within the root directory and is called *`pw.envEXAMPLE`*. By filling in your token here, you are allowing the code to connect to discord under your bots' credentials. By removing EXAMPLE from the end of the filename, the application will know where to find the file and will use the variables you have set in it to log in and run the bot. If any of these variables are filled out incorrectly, the application may throw an error and stop executing. Be sure you have followed all the instructions carefully and then fill in these fields:
+This exact file can be found within the root directory and is called __pw.envEXAMPLE__. By filling in your token here, you are allowing the code to connect to discord under your bots' credentials. By removing EXAMPLE from the end of the filename, the application will know where to find the file and will use the variables you have set in it to log in and run the bot. If any of these variables are filled out incorrectly, the application may throw an error and stop executing. Be sure you have followed all the instructions carefully and then fill in these fields:
 
 ```
 TOKEN='NzY2Mjg4NTk3OTU4NjU2MDIw.X4hL3g.a9lHHyS-blGotkeUwhjgFPQDucA'
@@ -204,7 +204,7 @@ It allows you to create a set of rules that your users must agree to before acce
 >3. Now create 2 seperate channels in a new category. Name the category something along the lines of ***Welcome*** or ***Server Info***. You are going to create a set of rules or a welcome message that your users must agree to or atleast read before unlocking the other channels of your server.
 >4. One channel is to be an inital welcome page where you will place your created message. This is the only page a user can see before they use the tag-me function, so they are forced to read it! Set this channel's permissions for `(@everyone)` to be: <strong>Read Messages & Read Message History</strong> only.
 >5.  The other page should be a *command channel*. This is the <strong>tag-me</strong> channel. There should be some information at the bottom of the welcome channel on how to use this channel. @everyone permissions here must be set as <strong>Read Messages & Send Messages</strong>. Nothing more.
->6. When a user calls the tag command from this channel, they will be assigned the role you define in your `pw.env` file under: __ROLE_TO_ASSIGN__
+>6. When a user calls the tag command from this channel, they will be assigned the role you define in your __pw.env__ file under: __ROLE_TO_ASSIGN__
 
 
 <br>
