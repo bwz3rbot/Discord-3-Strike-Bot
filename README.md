@@ -169,7 +169,7 @@ $ npm i
 ```
 
 These three commands will
-1. Create a directory for which store your data
+1. Create a directory to store your data
 2. Create a directory where you can store your database backups
 3. Install all the nececary dependencies as defined in the [package.json](https://github.com/web-temps/Discord-3-Strike-Bot/blob/main/package.json) file
 
@@ -181,24 +181,24 @@ Now that you've generated a token for a new app, your environment variables have
 
 ## Windows <a name = "windows"></a>
 
-Windows users simply click `mongo.bat` to start the database in the correct location.\
-Once mongo is up and running, you may use `run.bat` to start the bot.
+Windows users click `mongo.bat` to start the database in the correct location.\
+Once mongo is up and running, use `run.bat` to start the bot.
 
 ## Mac and Linux <a name = "mac-linux"></a>
 
-Mac and Linux users must use the .sh versions of the files. You must also first set them as executable before using. To do so run these commands:
+Mac and Linux users must use the .sh versions of the files. You must also first set them to be executable before running. To do so run these commands:
 ```
 $ sudo chmod +x mongo.sh
 $ sudo chmod +x run.sh
 ```
-Now that you've given execute permission on both files for your machine, you can use them to run the bot.
+Now that you've given execute permission on both of files for your machine, you can use them to run the bot.
 
-First open a terminal window and CD into the bot. The database needs to be running in its own window before running the bot. Use this command to run the MongoDB server instance in the correct location:
+First open a terminal window and `CD` into the bot. The database needs to be running in its own terminal window before starting the bot. Use this command to run the MongoDB server instance in the correct location:
 ```
 $ ./mongo.sh
 ```
 
-With the database up and running, you may open another terminal window and run this command to start the bot:
+With the database up and running, you may open another terminal window, `CD` back into the bot and run this command to start the bot:
 ```
 $ ./run.sh
 ```
@@ -214,9 +214,9 @@ On success, you should see a message that looks exactly like this one:
 
 # Backing Up Your Data <a name = "backup"></a>
 
-It's strongly recommended that you back up your database! That is where all your user data is stored and if anything happens to it, its not going to be a good time for your server. Luckily it is very easy to copy the database directory from one folder to another for safe keeping. If anything were to happen to your data, you may simply delete the bad folder and paste in the backup documents. It should all work out just fine.
+It is extremely recommended that you back up your database! That is where all your user data is stored and if anything happens to it, its not going to be a good time for your server. Luckily it is very easy to copy the database directory from one folder to another for safe keeping. If your data ever becomes corrupted or your hard drive fails, you may simply delete the bad folder and paste in the backup documents. It should all work out just fine.
 
-You should also note that you should never attempt this backup method while the database is running. The files will not be correctly copied and your existing data may not work right afterward!
+Also note that you should never attempt this backup method with the mongo server running. The files will not be copied correctly and your existing data may not work right afterward!
 
 One more thing to note is that simply storing all your backups in the __backups__ folder I had you make in the previous step, isn't going to cut it if you really want to be 100% sure the the data will be safe. You should probably keep it on another device altogether. Best if you kept it in cloud storage somewhere in case something were to happen to your personal storage device. Cloud storage is always the safest bet when keeping important data that your server relies on. It rules out the possibility of your own hardware failing.
 
