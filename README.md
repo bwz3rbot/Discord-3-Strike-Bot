@@ -30,38 +30,53 @@ These instructions will get you a copy of the project up and running on your loc
 
 This bot runs on Node.js with a MongoDB database. Be sure that you download and install both of these products carefully and correctly. The install procedures of both are rather straightforward, especially for Windows users. See below for links to the downloads:
 
+\
 [Official MongoDB Download and Installation Instructions](https://docs.mongodb.com/manual/administration/install-community/)\
 [Official Node.JS Download](https://nodejs.org/en/download/)
 
-
+-----
+\
 Once you have Mongo and Node installed on your system, Head on over to the [Discord Developer Portal](https://discord.com/developers/applications) and create a new application.
 
-
+<br>
 
 1. Click the New Application button to create a new bot.
 
 <img src="https://i.imgur.com/RS7HNEk.png">
 
+<br>
+<br>
+
 2. Give it a name and click create
 
 <img src="https://i.imgur.com/n0lJjsW.png">
+
+<br>
+<br>
 
 3. Navigate to the Bot tab and click Add Bot.
 
 <img src="https://i.imgur.com/N3L6bln.png">
 
+<br>
+<br>
+
 4. Now Click to Reveal Token. You'll need this token to authenticate your bot in the next step.
 
 <img src='https://i.imgur.com/X115w03.png'>
 
-<strong>Never share this token with anyone! It is used to authenticate your bot! Basically it is your bot's password.</strong> If the code does get leaked, you may simply go back to the Developer Portal on your bot's page and click the button to __*regenerate*__ a new token for your bot. Paste it back into your pw.env file and you're good to go!
+<br>
+<br>
+
+<strong>Never share this token with anyone! It is used to authenticate your bot! Basically it is your bot's password.</strong> Anyone with access to this token will have *full* control of the bot. That means that if you have granted the bot an admin role on your server (which you would need to for it to work), __anyone with access to your token will have admin rights on your server__. You can probably imagine that this is not something you really want to happen! No problem, though as if the token ever does in fact become leaked, you may simply go back to the [Developer Portal](https://discord.com/developers/applications) on your bot's page and click the button to __*regenerate*__ a new token for your bot. Paste it back into your pw.env file (which is explained below) and you're good to go!
 
 # Environment Variables <a name = "env_var"></a>
 
 This bot is <strong>highly customizable</strong>.
 -----
-The environment variables listed below are stored in your pw.env file. You will notice a single file that exists within the root directory of this code called __pw.envEXAMPLE.__ Here is where you can customize your bot. The only requirements are that you input the correct token for your bot and ACTIVITY_TYPE is limited to only 3 choices. But other than that, you have a number of variables to choose from to make the bot fit your server's personality a bit more. See below for definitions of what they all mean.
+The environment variables listed below are stored in your pw.env file. You will notice a single file that exists within the root directory of this codebase called __pw.envEXAMPLE.__ Here is where you can customize your bot. The only requirements are that you input the correct token for your bot and ACTIVITY_TYPE is limited to only 3 choices. But other than that, you have a number of variables to choose from to make the bot fit your server's personality a bit more. See below for definitions of what they all mean.
 
+-----
 
 <strong>TOKEN</strong> is taken from the Developer Portal when you created your app.\
 <strong>LIMIT_TO_CHANNELS</strong> are the names of the channels you wish the bot to receive commands on. They must be in the form of a comma sperated list for the bot to understand what this variable means.\
@@ -72,10 +87,14 @@ The environment variables listed below are stored in your pw.env file. You will 
 <strong>ADMIN_ROLE_NAME</strong> The user role needed to activate the bot.\
 <strong>GUEST_ADMIN_ROLE_NAME</strong> A secondary role that can also use the bot.\
 <strong>TAG_ME_CHANNEL</strong> The name of the channel for the tag-me function to run on.\
-<strong>TAG_COMMAND</strong> The command needed to activate the tag-me function. Should be set to something like 'agree' if you're having your users read rules, or something specific to your sub. A single word command. No arguments.\
+<strong>TAG_COMMAND</strong> The command needed to activate the tag-me function. Should be set to something like 'agree' if you're having your users read rules, or something specific to your sub. A single word command. No arguments. This function __will not be limited to admin use.__\
 <strong>ROLE_TO_ASSIGN</strong> The name of the role given by the tag-me command. This named role is used to grant access to your server. Its purpose is to have your users agree to a set of instructions before being able to continue on.
 
-<strong>If you do not wish to use the tag-me function, simply set the TAG_ME_CHANNEL variable to a channel name that does not exist within your server and the bot will overlook it.</strong>
+<strong>If you do not wish to use the tag-me function, simply set the TAG_ME_CHANNEL variable to a channel name that does not exist within your server and the bot will overlook it.</strong><br>
+
+## Read more about using the tag-me function [here]().
+_____
+### Below is an example of how to fill out your environment variables. This exact file can be found in the root directory and is called *pw.envEXAMPLE*. By filling in your data and removing EXAMPLE from the end of the filename, you are enabling your bot to work with your server.
 
 ```
 TOKEN='NzY2Mjg4NTk3OTU4NjU2MDIw.X4hL3g.a9lHHyS-blGotkeUwhjgFPQDucA'
