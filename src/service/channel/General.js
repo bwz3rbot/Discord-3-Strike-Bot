@@ -113,16 +113,16 @@ async function channelCommands(command, message, client) {
         default:
             console.log("Building embed...");
             const helpEmbed = EmbedBuilder.helpEmbed([{
-                syntax: `!warn <@username> <reason>`,
+                syntax: `${process.env.COMMAND_PREFIX}warn <@username> <reason>`,
                 description: `gives a user a warning`
             }, {
-                syntax: `!list <@username>`,
+                syntax: `${process.env.COMMAND_PREFIX}list <@username>`,
                 description: `displays a user's warning history`
             }, {
-                syntax: `!pardon <@username>`,
+                syntax: `${process.env.COMMAND_PREFIX}pardon <@username>`,
                 description: `clears all strikes against a specific user`
             }, {
-                syntax: `!kicked <@username>`,
+                syntax: `${process.env.COMMAND_PREFIX}kicked <@username>`,
                 description: `checks the database for a previously kicked user and displays their history`
             }]);
             console.log("sending embed...");

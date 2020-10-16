@@ -3,6 +3,7 @@ const {
     Message
 } = require('discord.js');
 const NumberedEmojis = require('./NumberEmojis').NumberedEmojis;
+const randomMessages = require('./RandomMessages').randomMessages;
 
 const userEmbed = function (user) {
     console.log("Setting description to: ", user.username);
@@ -43,16 +44,6 @@ const userEmbed = function (user) {
 
 }
 
-const randomMessages = [{
-        text: `Waka-Waka!`
-    },
-    {
-        text: `Baby yoda!`
-    },
-    {
-        text: `BIG OOF!`
-    }
-]
 const chooseMessage = function () {
     const randomNumber = Math.floor((Math.random() * randomMessages.length - 1) + 1);
     console.log("Choosing random number: ", randomNumber);
@@ -64,11 +55,12 @@ const helpEmbed = function (commands) {
     const MYNAME = "<@!752946263254630531>";
     console.LOG
     const helpEmbed = new MessageEmbed()
-        .setTitle(`\t\t${process.env.SET_USERNAME}\t\t||\t\tCommand Reference`)
+        .setTitle(`\t\t${process.env.SET_USERNAME}  ||  Command Reference`)
         .setFooter(randomMessages[chooseMessage()].text)
         .setColor('BLACK')
         .setTimestamp()
-        .setDescription(`This bot was made by ${MYNAME} \nUse these commands to interact with the bot:`);
+        .setDescription(`This bot was made by ${MYNAME} \nUse these commands to interact with the bot:`)
+        .setURL('https://github.com/web-temps/Discord-3-Strike-Bot#functions-and-commands-');
     commands.forEach(command => {
         helpEmbed.addFields({
             name: command.syntax,

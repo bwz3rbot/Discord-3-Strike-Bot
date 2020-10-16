@@ -184,7 +184,7 @@ This will display an embed containing the users full warning history and their c
 
 To remove all strikes from a user, an admin may call this command:
 ```
-!clear @username
+!pardon @username
 ```
 
 All strikes will be removed from the user. The user's lifetime strikes will, ofcourse remain unchanged, and the previous warning reasons will remain visible for an admin to bring up at any time.
