@@ -207,33 +207,33 @@ One more thing to note is that simply storing all your backups in the __backups_
 
 ## Tag-Me <a name = "tag-me"></a>
 
-The `tag-me` command is used to host a welcome message on your server.\
-It allows you to create a set of rules that your users must agree to before accessing the rest of your content.
+The `tag` command is used to host a welcome message on your server.\
+It allows an administrator to create a set of rules which users must agree to before accessing the rest of your content.
 
-How to use the tag-me function:
+How to use enable the tag-me function on your server:
 1. First, if you have not done so yet, go into your server channel settings, and restrict `(@everyone)` to have no permissions on your server.
 2. Now create a new role which must be allowed base access to your sub. That means a minumum of being able to __Read Text Channels__.
 3. Now create 2 seperate channels in a new category. Name the category something along the lines of ***Welcome*** or ***Server Info***. You are going to create a set of rules or a welcome message that your users must agree to or atleast read before unlocking the other channels of your server.
 4. One channel is to be an inital welcome page where you will place your created message. This is the only page a user can see before they use the tag-me function, so they are forced to read it! Set this channel's permissions for `(@everyone)` to be: <strong>Read Messages & Read Message History</strong> only.
-5.  The other page should be a *command channel*. This is the <strong>tag-me</strong> channel. There should be some information at the bottom of the welcome channel on how to use this channel. @everyone permissions here must be set as <strong>Read Messages & Send Messages</strong>. Nothing more.
+5.  The other page should be a *command channel*. This is the <strong>tag-me</strong> channel. There should be some information at the bottom of the welcome channel on how to use this channel. `(@everyone)` permissions here must be set as <strong>Read Messages & Send Messages</strong>. Nothing more.
 6. When a user calls the tag command from this channel, they will be assigned the role you define in your __pw.env__ file under: __ROLE_TO_ASSIGN__
 
 
-This bot will store the data of all users who have been previously kicked from the guild through the `warn` command. If a user attempts to use the `tag-me` command while being in the list of kicked users, they will not be awarded the role.
+This bot will store the data of all users who have been previously kicked from the guild through the `warn` command. If a user attempts to use the `tag` command while being in the list of kicked users, they will not be awarded the role.
 
 
 <br>
 
 ## Warning System <a name = "warning"></a>
 
-The warning system works by receiving a warn command by an admin of the server, and querying the database for existing user data. You must provide an @link to a user that is a current member of the guild for the function to proceed. Upon calling the command a user will be selected from the database. The user will be given a warning in the form of an embed and will receive a strike.
+The warning system works by receiving a `warn` command by an admin of the server, and querying the database for existing user data. You must provide a single argument which is to be in the form of a mention of a username belonging to a user who is currently a member of the guild. Upon calling the command a user will be selected from the database. The user will be given a warning in the form of an embed and will receive a strike.
 
-To warn a user, use the `warn` command:
+To warn a user, an admin may use the `warn` command:
 ```
 !warn <@username> <reason for warning>
 ```
 
-To list a users' warning history, use the `list` command:
+To view a users' warning history, an admin may use the `list` command:
 ```
 !list <@username>
 ```
@@ -249,6 +249,11 @@ All strikes will be removed from the user. The user's lifetime strikes will, ofc
 To see the history of a user that has been previously kicked from the guild, use the `kicked` command:
 ```
 !kicked <@username>
+```
+
+To remove a user from the database of users previously kicked through the `warn` command, you may use the `unkick` command. Upon using this command, the user will be allowed to use the `tag` command once again, thereby granting them access to the rest of your server.
+```
+!unkick <@username>
 ```
 
 # Example Output From The Bot <a name="example"></a>
@@ -275,11 +280,11 @@ To see the history of a user that has been previously kicked from the guild, use
 <br>
 
 ### Example output from the `warn` command:
-<img src='https://i.imgur.com/6wwbZWW.png'>
+<img src='https://i.imgur.com/vwSiirj.png'>
 <br>
 
 ### Example output from the `warn` command when a user has 2 strikes:
-<img src='https://i.imgur.com/vwSiirj.png'>
+<img src='https://i.imgur.com/6wwbZWW.png'>
 <br>
 
 ### Example output from the `pardon` command:

@@ -7,15 +7,6 @@ const NumberedEmojis = require('./NumberEmojis').NumberedEmojis;
 const randomMessages = require('./RandomMessages').randomMessages;
 
 const userEmbed = function (user, message) {
-    console.log("EMBED BUILDER BUILDING USER EMBED:".green);
-    console.log("THIS USER: ".yellow);
-    console.log(user);
-    console.log("THESE WARNINGS".yellow);
-    console.log(user.warnings);
-    console.log("this username: ");
-    console.log(user.username);
-    console.log("typeof: ", typeof user);
-
     let embedColor;
     user.strikeCount < 3 ? embedColor = `#FFF16B` : embedColor = `#ff1919`
     if (user.strikeCount === 0) {
@@ -27,7 +18,7 @@ const userEmbed = function (user, message) {
     console.log()
     const embed = new MessageEmbed()
         .setTitle(`This user is at ${strikeCountEmojis} Strikes!\nRecent warning history:`)
-        .addField(`lifetime warnings: ${lifetimeStrikesEmojis}`, `\u200b`, false)
+        .addField(`Total lifetime warnings: ${lifetimeStrikesEmojis}`, `\u200b`, false)
         .setColor(embedColor)
         .setTimestamp()
         .setDescription(user.username);
@@ -40,9 +31,11 @@ const userEmbed = function (user, message) {
         embed.addFields({
             name: `Warning ${buildNumberedEmojis(i)}`,
             value: `${user.warnings[i].reason}`,
+            inline: true
         }, {
             name: `Warned at 🕑`,
-            value: `${user.warnings[i].time}`
+            value: `${user.warnings[i].time}`,
+            inline:true
         }, {
             name: '\u200b',
             value: '\u200b',
@@ -61,13 +54,14 @@ const chooseMessage = function () {
     return randomNumber;
 }
 // Help Embed
-const helpEmbed = function (commands) {
+async function helpEmbed(commands) {
+    const randomMessage = await randomMessages[chooseMessage()].text()
 
     const MYNAME = "<@!752946263254630531>";
     console.LOG
     const helpEmbed = new MessageEmbed()
         .setTitle(`\t\t${process.env.SET_USERNAME}  ||  Command Reference`)
-        .setFooter(randomMessages[chooseMessage()].text)
+        .setFooter(randomMessage)
         .setColor('BLACK')
         .setTimestamp()
         .setDescription(`This bot was made by ${MYNAME} \nUse these commands to interact with the bot:`)
@@ -75,7 +69,8 @@ const helpEmbed = function (commands) {
     commands.forEach(command => {
         helpEmbed.addFields({
             name: command.syntax,
-            value: command.description
+            value: command.description,
+            inline: true
         })
     })
     return helpEmbed
@@ -126,7 +121,7 @@ const warningEmbed = function (message, user) {
     console.log("Got these strings back: ", lifetimeStrikesEmojis, strikeCountEmojis);
     const embed = new MessageEmbed()
         .setTitle(message)
-        .addField(`lifetime warnings: ${lifetimeStrikesEmojis}`, `\u200b`, false)
+        .addField(`Total lifetime warnings: ${lifetimeStrikesEmojis}`, `\u200b`, false)
         .setColor(embedColor)
         .setDescription(user.username)
         .setTimestamp();
@@ -137,7 +132,8 @@ const warningEmbed = function (message, user) {
     embed.addFields({
         name: `
         Strike ${strikeCountEmojis}`,
-        value: `${warning.reason}`
+        value: `${warning.reason}`,
+        inline:true
     }, {
         name: '\u200b',
         value: '\u200b',
@@ -156,7 +152,7 @@ const zeroStrikesEmbed = function (user) {
 
     const embed = new MessageEmbed()
         .setTitle(`🥳  Congradulations!  🎉 You have been pardoned!`)
-        .addField(`lifetime warnings: ${buildNumberedEmojis(user.lifetimeStrikes)}`, `\u200b`, false)
+        .addField(`Total lifetime warnings: ${buildNumberedEmojis(user.lifetimeStrikes)}`, `\u200b`, false)
         .setColor('GREEN')
         .setTimestamp()
         .setDescription(`${user.username} is back at :zero: strikes.`);
