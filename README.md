@@ -33,7 +33,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 # Prerequisites <a name = "pres"></a>
 
-This bot runs on Node.js and uses a MongoDB database. You'll need to download and install both before moving on.
+This project runs on Node.js and uses a MongoDB database. You'll need to download and install both before moving on.
 
 \
 [Official MongoDB Download and Installation Instructions](https://docs.mongodb.com/manual/administration/install-community/)\
@@ -74,7 +74,7 @@ Once you have Mongo and Node installed on your system, head on over to the [Disc
 <br>
 <br>
 
-<strong>Never share this token with anyone! It is used to authenticate your bot! It is your bot's password.</strong> Anyone with access to this token will have *full* control over the bot. That means that if you have granted the bot an admin role on your server (which you would need to for it to work), __anyone with access to your token will have admin rights on your server__. You can probably imagine that this is not something you really want to happen! No problem, though as if the token ever does in fact become leaked, you may simply go back to the [Developer Portal](https://discord.com/developers/applications) on your bot's page and click the button to __*regenerate*__ a new token for your bot. Paste it back into your `pw.env` file (which is explained below) and you're good to go!
+<strong>Never share this token with anyone! It is used to authenticate your bot! It is your bot's password.</strong> Anyone with access to this token will have *full* control over the bot. That means that if you have granted the bot an admin role on your server (which you would need to in order for it to work), __anyone with access to your token will have admin rights on your server__. If your bots password ever does get out, you may simply go back to the [Developer Portal](https://discord.com/developers/applications) on your bot's page and click the button to _regenerate_ a new token for your bot. Paste it back into your `pw.env` file (which will be explained in detail below) and you'll be good to go!
 
 # Inviting The Bot To Your Server <a name="invite"></a>
 Follow these instructions on how to format your invite link: https://discordjs.guide/preparations/adding-your-bot-to-servers.html#bot-invite-links
