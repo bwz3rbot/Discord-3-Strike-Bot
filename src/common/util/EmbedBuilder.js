@@ -60,7 +60,7 @@ const helpEmbed = function (commands) {
         .setColor('BLACK')
         .setTimestamp()
         .setDescription(`This bot was made by ${MYNAME} \nUse these commands to interact with the bot:`)
-        .setURL('https://github.com/web-temps/Discord-3-Strike-Bot#functions-and-commands-');
+        .setURL('https://github.com/web-temps/Discord-3-Strike-Bot/blob/main/COMMANDS.MD');
     commands.forEach(command => {
         helpEmbed.addFields({
             name: command.syntax,
