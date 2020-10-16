@@ -11,9 +11,7 @@ const {
 
 class Warning {
     constructor(reason) {
-        console.log("Constructing a new Warning Object!");
         this.time = dateformat(new Date());
-        console.log("Constructed At: ", this.time);
         this.reason = reason
     }
 }
@@ -48,7 +46,6 @@ async function checkUserExistsWithinGuild(username, message) {
 // [Warn User Command]
 async function warnUser(username, reason, message) {
     await checkUserExistsWithinGuild(username, message);
-    console.log("warning user: ", username);
     // First check if user exists witin the database
     let user = await mongoose.StrikedUserModel.findOne({
         username: username
@@ -57,7 +54,6 @@ async function warnUser(username, reason, message) {
     // If user does not exist, create a new user object
 
     if (user == null) {
-        console.log("User was not found within the database. Creating new user.");
         // Give a warning
         const newUser = new User(username).addWarning(reason);
         const strikedUserInstance = new mongoose.StrikedUserModel(newUser);
@@ -104,12 +100,9 @@ async function showUserStrikes(username, message) {
         username: username
     });
     if (foundUser == null) {
-        console.log("No user!");
         throw new Error("That user doesn't exist within the list of previously warned users! Try searching for them in the Kicked User directory by using the !kicked command;");
     } else {
-        console.log("WarnService asking EmbedBuilder for a userEmbed....");
         const embed = EmbedBuilder.userEmbed(foundUser);
-        console.log('WarnService sending the embed...');
         await message.channel.send(embed);
     }
 
@@ -125,27 +118,18 @@ async function listStriked(message) {
 async function clearWarnings(user, message) {
     console.log("Clearing all warnings for user: ", user);
 
-
-    console.log("Trying to find user in the StrikedUserModel by username: ", user);
     const foundUser = await mongoose.StrikedUserModel.findOne({
         username: user
     });
-    if(foundUser == null){
+    if (foundUser == null) {
         throw new Error("That user doesn't have any strikes!;")
     }
-
-    console.log("Found this user: ", foundUser);
-
     foundUser.strikeCount = 0
-    console.log("Saving the found user... the user to be saved: ", foundUser);
     await foundUser.save();
     let embed;
     try {
-        console.log("Beginning to build embed...");
-        embed = EmbedBuilder.zeroStrikesEmbed(foundUser);
-    } catch (err) {
-        console.log(err);
-    }
+        embed = await EmbedBuilder.zeroStrikesEmbed(foundUser);
+    } catch (err) {}
     await message.channel.send(embed);
 }
 

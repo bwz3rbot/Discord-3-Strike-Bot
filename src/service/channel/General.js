@@ -8,20 +8,16 @@ const {
 const KickService = require('../bot/KickService');
 const WarnService = require('../bot/WarnService');
 async function on(message, client) {
-
-    console.log(message.member)
     // Check if channel was on the list of channels in pw.env
     let filteredChannel = channelFilter(message.channel.name);
     if (!filteredChannel) {
         // If channel is not validated, return from function
-        console.log("INVALID CHANNEL".red);
         return
     }
     // Check if request was from an admin or guest admin
     const isAdminRequest = ModActions.checkRoleAdmin(message);
     const isGuestAdminRequest = ModActions.checkRoleGuestAdmin(message);
     if (isAdminRequest || isGuestAdminRequest) {
-        console.log("VALID REQUEST FROM ADMIN ROLE. PROCEEDING".green);
         // Check that message received was not from self or another bot
         if (!(message.author === client.user)) {
             // Build a command and process it through the command switch
@@ -36,18 +32,13 @@ async function on(message, client) {
                 }
             }
         }
-    } else {
-        console.log("NOT VALID ADMIN.".red);
-
-    }
+    } 
 }
 
 const channelFilter = function (channel) {
     const userChannels = process.env.LIMIT_TO_CHANNELS.split(",");
     let validatedChannelsList = userChannels.filter(ch => ch.trim() == channel);
-    console.log("Validated Channels: ", validatedChannelsList);
     if (validatedChannelsList.length > 0) {
-        console.log("validatedChannelsList was not null! Returning this value: ", validatedChannelsList[0]);
         return validatedChannelsList[0]
     }
 }
@@ -70,8 +61,6 @@ async function limitToChannel(command, message, client) {
 
 // Command and function definitions:
 async function channelCommands(command, message, client) {
-    console.log("Going through the channel commands, first validating the username...")
-    console.log('Command was: ', command);
     switch (command.directive) {
         case "warn":
             validateUsername(command.args[0]);
@@ -85,23 +74,19 @@ async function channelCommands(command, message, client) {
             await WarnService.warnUser(warnUser, warnReson, message);
             break;
         case "list":
-            console.log("command was list");
             validateUsername(command.args[0]);
             if (!command.args[0]) {
                 throw new Error("Command must contain a user to search for!;");
             } else {
-                console.log("Asking WarnService to showUserStrikes");
                 await WarnService.showUserStrikes(command.args[0], message);
             }
 
             // Command should list current warnings on a specific user
             break;
         case "pardon":
-            console.log("command was pardon. command:", command);
             validateUsername(command.args[0]);
             const clearUser = command.args[0];
             if (clearUser) {
-                console.log("Asking warn service to clear the warnings...")
                 await WarnService.clearWarnings(clearUser, message);
             }
             // Command should be called with a single argument of @username
@@ -109,12 +94,9 @@ async function channelCommands(command, message, client) {
             break;
 
         case "unkick":
-            console.log("Command was unkick... Validating username...");
             validateUsername(command.args[0]);
-            console.log("Asking KickService to getKickedUser...");
             const foundUserToUnkick = await KickService.getKickedUser(command.args[0]);
             if (foundUserToUnkick) {
-                console.log("Found this kickedUser: ", foundUserToUnkick)
                 await KickService.unkickUser(foundUserToUnkick);
                 await message.channel.send(`${foundUserToUnkick.username} has been un-kicked.`);
             }
@@ -130,24 +112,22 @@ async function channelCommands(command, message, client) {
             break;
 
         default:
-            console.log("Building embed...");
             const helpEmbed = await EmbedBuilder.helpEmbed([{
                 syntax: `\`${process.env.COMMAND_PREFIX}warn <@username> <reason>\``,
-                description: `gives a user a warning`
+                description: `gives a user a warning and a strike`
             }, {
                 syntax: `\`${process.env.COMMAND_PREFIX}list <@username>\``,
                 description: `displays a user's warning history`
             }, {
                 syntax: `\`${process.env.COMMAND_PREFIX}pardon <@username>\``,
-                description: `clears all strikes against a specific user`
+                description: `sets a users current strike level back to zero`
             }, {
                 syntax: `\`${process.env.COMMAND_PREFIX}kicked <@username>\``,
-                description: `checks the database for a previously kicked user and displays their history`
+                description: `searches the database for a previously kicked user and displays their history`
             }, {
                 syntax: `\`${process.env.COMMAND_PREFIX}unkick <@username>\``,
-                description: `removes a user from the database of kicked users`
+                description: `removes a user from the list of kicked users`
             }]);
-            console.log("sending embed...");
             await message.channel.send(helpEmbed);
             break;
     }

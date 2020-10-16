@@ -3,11 +3,8 @@
 // [Kick From Guild]
 async function kick(username, message) {
 
-    console.log("Mod Actions Kicking user with name: ", username);
-    console.log("Received this message:", message);
     // Takes in a msg and command arguments to the 'kick' command
     member = message.mentions.members.first();
-    console.log("Received mention with this user: ", member);
 
     // Kick with reason
     console.log("Kicking member...");
@@ -39,12 +36,10 @@ async function assignRole(message, role) {
 // [Check Role Admin]
 const checkRoleAdmin = function (msg) {
     // Return true if user has role of admin
-    console.log("Validating user has role: ", process.env.ADMIN_ROLE_NAME);
     return msg.member.roles.cache.some(role => role.name === process.env.ADMIN_ROLE_NAME);
 }
 const checkRoleGuestAdmin = function (msg) {
     // Return true if user has role of admin
-    console.log("Validating user has role: ", process.env.ADMIN_ROLE_NAME);
     return msg.member.roles.cache.some(role => role.name === process.env.GUEST_ADMIN_ROLE_NAME);
 }
 

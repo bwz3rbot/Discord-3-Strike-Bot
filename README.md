@@ -256,6 +256,10 @@ To remove a user from the database of users previously kicked through the `warn`
 !unkick <@username>
 ```
 
+To access the `help` embed with a list of commands, just send an empty command prefix:
+```
+!
+```
 # Example Output From The Bot <a name="example"></a>
 
 # Example Output From The Tag-Me Function<a name="example.tag"></a>
@@ -276,7 +280,7 @@ To remove a user from the database of users previously kicked through the `warn`
 # Example Output From The Warning System<a name="example.warning"></a>
 
 ### Example output from the `help` command:
-<img src='https://i.imgur.com/dc0TPDo.png'>
+<img src='https://i.imgur.com/wKSxTpE.png'>
 <br>
 
 ### Example output from the `warn` command:
@@ -285,6 +289,10 @@ To remove a user from the database of users previously kicked through the `warn`
 
 ### Example output from the `warn` command when a user has 2 strikes:
 <img src='https://i.imgur.com/6wwbZWW.png'>
+<br>
+
+### Example output from the `list` command:
+<img src='https://i.imgur.com/1vqChHJ.png'>
 <br>
 
 ### Example output from the `pardon` command:

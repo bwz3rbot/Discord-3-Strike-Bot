@@ -20,7 +20,6 @@ async function on(message, client) {
 }
 // [Commands]
 async function channelCommands(command, message) {
-    console.log("Checking if user has role: ", process.env.ROLE_TO_ASSIGN);
     const userHasRole = checkUserHasRole(message);
     if (userHasRole) {
         return
@@ -29,12 +28,7 @@ async function channelCommands(command, message) {
     switch (command.directive) {
         // Assign role 'user'
         case process.env.TAG_COMMAND:
-
-
-            console.log("Assigning role `user` to: ", message.member.user.username);
             await checkUserKickStatus(message.author.id);
-
-            console.log("user kick status good. assigning role..")
             await ModActions.assignRole(message);
             await message.channel.send(process.env.WELCOME_MESSAGE);
             break;
@@ -46,14 +40,11 @@ async function channelCommands(command, message) {
 }
 
 async function replyWithErrorMessage(message, err) {
-    console.log("Replying with this error message: ", err);
     const msg = err.substring(0, err.indexOf(";"));
     await message.channel.send(`${msg}`);
 }
 
 async function checkUserKickStatus(id) {
-    console.log("Checking user Kick status...");
-    console.log("Asking Kick Service for user...", id);
     let possiblyKickedUser;
     try {
         possiblyKickedUser = await getKickedUser(`<@!${id}>`);
@@ -66,10 +57,7 @@ async function checkUserKickStatus(id) {
 }
 
 const checkUserHasRole = function (message) {
-    console.log("Checking if user has role of: ", process.env.ROLE_TO_ASSIGN);
-    console.log("checking this message: ");
     const foundRole = message.member.roles.cache.some(role => role.name === process.env.ROLE_TO_ASSIGN);
-    console.log("Returning this found this role: ", foundRole);
     return foundRole;
 
 }

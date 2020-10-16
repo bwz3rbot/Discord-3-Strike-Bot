@@ -11,6 +11,7 @@
     - [Pardon](#warn.pardon)
     - [Kicked](#warn.kicked)
     - [Unkick](#warn.unkick)
+    - [Help](#warn.help)
 
 
 # About <a name = "about"></a>
@@ -20,9 +21,6 @@ This bot allows for an administrator to set a custom command prefix. This means 
 # Tag-Me <a name = "tag-me"></a>
 ## Tag <a name = "tag-me.tag"></a>
 ### Using this function will grant a new user a role on your server. The role that it grants should be configured to allow a user viewing rights to your other channels. The purpose of this function is to have a channel where a new user can read a set of rules you define. Before using the *tag* command, they must to agree to your terms. This command may be named differntly per server as it is defined in the bots configuration file. If a user has been previously kicked using the `warn` command, they will be denied a user role upon calling the `tag` command.
-<br>
-
-To use the `tag` command, from within the tag-me channel:\
 `$tag`
 
 
@@ -44,6 +42,10 @@ To use the `tag` command, from within the tag-me channel:\
 ### A server admin can use this command to see the history of a user who has been previously kicked from the guild through using the `warn` command
 `$kicked <@username>`
 
-## Unkick <a name = "warn.kicked"></a>
+## Unkick <a name = "warn.unkick"></a>
 ### A server admin can use this command to remove a user from the *Previously Kicked* Database. The user will once again be allowed to trigger the `tag` command to gain access to your server.
 `$unkick <@username>`
+
+## Help <a name = "warn.help"></a>
+### To access the help embed, just send an empty command prefix:
+`$`
