@@ -1,5 +1,5 @@
 TOKEN=''
-LIMIT_TO_CHANNELS="command-channel,general-chat,welcome"
+LIMIT_TO_CHANNELS="command-channel,general-chat"
 COMMAND_PREFIX="!"
 ACTIVITY_TYPE="WATCHING"
 ACTIVITY_NAME="you! 👀"

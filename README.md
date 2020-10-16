@@ -82,9 +82,9 @@ The environment variables listed below are stored in your __pw.env__ file. You w
 -----
 
 <strong>TOKEN</strong> Taken from the [Developer Portal](https://discord.com/developers/applications) when you created your app.\
-<strong>LIMIT_TO_CHANNELS</strong> The names of channel every you wish the bot to listen for commands on. This variable must formatted as a list seperated by commas.\
+<strong>LIMIT_TO_CHANNELS</strong> The names of each channel you wish the bot to listen for commands on. This variable must be formatted as a list seperated by commas.\
 <strong>COMMAND_PREFIX</strong> A single character you wish to prefix commands with.\
-<strong>ACTIVITY_TYPE</strong> Must be set to either PLAYING, LISTENING or WATCHING for the bot to function correctly as defined [here](https://discord.js.org/#/docs/main/stable/typedef/ActivityType). The bot __does not allow__ for a user to use the STREAMING or CUSTOM_STATUS activity types.\
+<strong>ACTIVITY_TYPE</strong> Must be set to either PLAYING, LISTENING or WATCHING for the bot to function correctly as defined [here](https://discord.js.org/#/docs/main/stable/typedef/ActivityType). This bot __does not allow__ for a user to use the STREAMING or CUSTOM_STATUS activity types.\
 <strong>ACTIVITY_NAME</strong> Displays along with the activity type.\
 <strong>SET_USERNAME</strong> The username you wish your bot to display.\
 <strong>ADMIN_ROLE_NAME</strong> The role a user is required to have in order to activate the bot.\
@@ -92,7 +92,7 @@ The environment variables listed below are stored in your __pw.env__ file. You w
 <strong>TAG_ME_CHANNEL</strong> The name of the channel for the tag-me function to run on.\
 <strong>TAG_COMMAND</strong> A name for the tag-me command to listen for. Should be set to something similar to 'agree' if you're having your users read a set of rules, or something more specific to your sub. It must be a single word command. It receives no arguments. This function __will not be limited to admin use like the others.__\
 <strong>ROLE_TO_ASSIGN</strong> The name of the role assigned by the tag-me command. This named role is used to grant access to your server. Its primary purpose is to have your users agree to a set of instructions before being allowed access to the rest of your content.\
-<strong>WELCOME_MESSAGE</strong> A brief message that will sent to the tag-me channel after a user is given a role.
+<strong>WELCOME_MESSAGE</strong> A brief message that will be sent to the tag-me channel after a user is given a role.
 
 <strong>If you do not wish to use the tag-me function, simply set the TAG_ME_CHANNEL variable to a channel name that does not exist within your server and the bot will overlook it. Enabling the tag-me channel for your server is explained in the [final section](https://github.com/web-temps/Discord-3-Strike-Bot#tag-me-) of this guide.</strong><br>
 
@@ -104,7 +104,7 @@ This exact file can be found within the root directory and is called __pw.envEXA
 
 ```
 TOKEN='NzY2Mjg4NTk3OTU4NjU2MDIw.X4hL3g.a9lHHyS-blGotkeUwhjgFPQDucA'
-LIMIT_TO_CHANNELS="command-channel,general-chat,welcome"
+LIMIT_TO_CHANNELS="command-channel,general-chat"
 COMMAND_PREFIX="!"
 ACTIVITY_TYPE="WATCHING"
 ACTIVITY_NAME="you! 👀"
@@ -130,23 +130,25 @@ $ mongo --version
 ```
 
 
-Once Node and Mongo are installed, and you have your ppplication created in the [Discord Developer's Portal](https://discord.com/developers/applications), download the source code on this page and unzip it.
+Once Node and Mongo are installed, and you have your application created in the [Discord Developer's Portal](https://discord.com/developers/applications), download the source code on this page and unzip it to a safe spot on your hard drive.
 
 
 
-Before running the app, you must use npm to install the packages needed to run a Discord bot and access the database.
+Before running the app, you need to use npm to install packages required to run a Discord bot, and also to access the database.
 
-To do so, first you must open your terminal, and cd into the folder containing the source code you just downloaded. Now run this command from the root folder of the codebase:
+To do so, first you must open your terminal, and `cd` into the folder containing the source code you just downloaded. Now run this command from the root folder of the codebase:
 ```
 $ mkdir database
+$ mkdir backups
 $ npm i
 ```
 
 These two commands will
 1. Create a directory for which store your data
-2. Install all the nececary dependencies as defined in the [package.json](https://github.com/web-temps/Discord-3-Strike-Bot/blob/main/package.json) file
+2. Create a directory where you can store your database backups
+3. Install all the nececary dependencies as defined in the [package.json](https://github.com/web-temps/Discord-3-Strike-Bot/blob/main/package.json) file
 
-Once these packages are completely installed, you will be only one step away from running your bot for the very first time!
+Once these packages are completely installed, you will be only one step away from running your bot.
 
 # Usage <a name = "usage"></a>
 
@@ -185,7 +187,6 @@ On success, you should see a message that looks exactly like this one:
 ```
 
 
-
 # Backing Up Your Data <a name = "backup"></a>
 
 It's strongly recommended that you back up your database! That is where all your user data is stored and if anything happens to it, its not going to be a good time for your server. Luckily it is very easy to copy the database directory from one folder to another for safe keeping. If anything were to happen to your data, you may simply delete the bad folder and paste in the backup documents. It should all work out just fine. <strong>You should also note that you should never attempt this backup method with the database running. The files will not be correctly copied and your existing data may not work right afterward!</strong>
@@ -198,25 +199,25 @@ It's strongly recommended that you back up your database! That is where all your
 <br>
 
 
->## Tag-Me <a name = "tag-me"></a>
+## Tag-Me <a name = "tag-me"></a>
 
->The `tag-me` command is used to host a welcome message on your server.\
+The `tag-me` command is used to host a welcome message on your server.\
 It allows you to create a set of rules that your users must agree to before accessing the rest of your content.
->
->How to use the tag-me function?
->1. First, if you have not done so yet, go into your server channel settings, and restrict `(@everyone)` to have no permissions on your server.
->2. Now create a new role which must be allowed base access to your sub. That means a minumum of being able to __Read Text Channels__.
->3. Now create 2 seperate channels in a new category. Name the category something along the lines of ***Welcome*** or ***Server Info***. You are going to create a set of rules or a welcome message that your users must agree to or atleast read before unlocking the other channels of your server.
->4. One channel is to be an inital welcome page where you will place your created message. This is the only page a user can see before they use the tag-me function, so they are forced to read it! Set this channel's permissions for `(@everyone)` to be: <strong>Read Messages & Read Message History</strong> only.
->5.  The other page should be a *command channel*. This is the <strong>tag-me</strong> channel. There should be some information at the bottom of the welcome channel on how to use this channel. @everyone permissions here must be set as <strong>Read Messages & Send Messages</strong>. Nothing more.
->6. When a user calls the tag command from this channel, they will be assigned the role you define in your __pw.env__ file under: __ROLE_TO_ASSIGN__
+
+How to use the tag-me function?
+1. First, if you have not done so yet, go into your server channel settings, and restrict `(@everyone)` to have no permissions on your server.
+2. Now create a new role which must be allowed base access to your sub. That means a minumum of being able to __Read Text Channels__.
+3. Now create 2 seperate channels in a new category. Name the category something along the lines of ***Welcome*** or ***Server Info***. You are going to create a set of rules or a welcome message that your users must agree to or atleast read before unlocking the other channels of your server.
+4. One channel is to be an inital welcome page where you will place your created message. This is the only page a user can see before they use the tag-me function, so they are forced to read it! Set this channel's permissions for `(@everyone)` to be: <strong>Read Messages & Read Message History</strong> only.
+5.  The other page should be a *command channel*. This is the <strong>tag-me</strong> channel. There should be some information at the bottom of the welcome channel on how to use this channel. @everyone permissions here must be set as <strong>Read Messages & Send Messages</strong>. Nothing more.
+6. When a user calls the tag command from this channel, they will be assigned the role you define in your __pw.env__ file under: __ROLE_TO_ASSIGN__
 
 
 <br>
 
->## Warning System <a name = "warning"></a>
+## Warning System <a name = "warning"></a>
 
->The warning system works by receiving a warn command by an admin of the server, and querying the database for existing user data. You must provide an @link to a user that is a current member of the guild for the function to proceed. Upon calling the command a user will be selected from the database. The user will be given a warning in the form of an embed and will receive a strike.
+The warning system works by receiving a warn command by an admin of the server, and querying the database for existing user data. You must provide an @link to a user that is a current member of the guild for the function to proceed. Upon calling the command a user will be selected from the database. The user will be given a warning in the form of an embed and will receive a strike.
 
 To warn a user, use the `warn` command:
 ```
@@ -227,14 +228,14 @@ To list a users' warning history, use the `list` command:
 ```
 !list <@username>
 ```
->This command will display an embed containing a users most recent warning history up to a maximum of 8 warnings. It will display their current strike level (0-2) and their total lifetime strikes. The total lifetime strikes is the total amount of warnings a user has been given in the past. Users may have their current strike level set back to zero by an admin through the use of the `pardon` command.
+This command will display an embed containing a users most recent warning history up to a maximum of 8 warnings. It will display their current strike level (0-2) and their total lifetime strikes. The total lifetime strikes is the total amount of warnings a user has been given in the past. Users may have their current strike level set back to zero by an admin through the use of the `pardon` command.
 
 To remove all strikes from a user, use the `pardon` command:
 ```
 !pardon <@username>
 ```
 
->All strikes will be removed from the user. The user's lifetime strikes will, ofcourse remain unchanged, and the previous warning reasons will remain visible for an admin to bring up at any time.
+All strikes will be removed from the user. The user's lifetime strikes will, ofcourse remain unchanged, and the previous warning reasons will remain visible for an admin to bring up at any time.
 
 To see the history of a user that has been previously kicked from the guild, use the `kicked` command:
 ```
