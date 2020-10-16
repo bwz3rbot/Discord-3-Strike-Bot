@@ -107,7 +107,9 @@ async function showUserStrikes(username, message) {
         console.log("No user!");
         throw new Error("That user doesn't exist within the list of previously warned users! Try searching for them in the Kicked User directory by using the !kicked command;");
     } else {
+        console.log("WarnService asking EmbedBuilder for a userEmbed....");
         const embed = EmbedBuilder.userEmbed(foundUser);
+        console.log('WarnService sending the embed...');
         await message.channel.send(embed);
     }
 

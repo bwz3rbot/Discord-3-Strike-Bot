@@ -2,15 +2,26 @@ const {
     MessageEmbed,
     Message
 } = require('discord.js');
+const __ = require('colors');
 const NumberedEmojis = require('./NumberEmojis').NumberedEmojis;
 const randomMessages = require('./RandomMessages').randomMessages;
 
-const userEmbed = function (user) {
-    console.log("Setting description to: ", user.username);
-    console.log("Building the user embed for user: ", user);
+const userEmbed = function (user, message) {
+    console.log("EMBED BUILDER BUILDING USER EMBED:".green);
+    console.log("THIS USER: ".yellow);
+    console.log(user);
+    console.log("THESE WARNINGS".yellow);
+    console.log(user.warnings);
+    console.log("this username: ");
+    console.log(user.username);
+    console.log("typeof: ", typeof user);
 
     let embedColor;
-    user.strikeCount < 3 ? embedColor = `#FFF16B` : embedColor = `#ff1919`;
+    user.strikeCount < 3 ? embedColor = `#FFF16B` : embedColor = `#ff1919`
+    if (user.strikeCount === 0) {
+        embedColor = 'GREEN'
+    }
+
     const strikeCountEmojis = buildNumberedEmojis(user.strikeCount);
     const lifetimeStrikesEmojis = buildNumberedEmojis(user.lifetimeStrikes);
     console.log()

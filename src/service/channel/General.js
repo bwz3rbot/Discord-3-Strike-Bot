@@ -28,7 +28,7 @@ async function on(message, client) {
             let command = cmd(message.content);
             if (command) {
                 try {
-                    
+
                     await channelCommands(command, message, client);
                 } catch (err) {
                     // If any errors are thrown, reply to the message with an error message
@@ -85,10 +85,12 @@ async function channelCommands(command, message, client) {
             await WarnService.warnUser(warnUser, warnReson, message);
             break;
         case "list":
+            console.log("command was list");
             validateUsername(command.args[0]);
             if (!command.args[0]) {
                 throw new Error("Command must contain a user to search for!;");
             } else {
+                console.log("Asking WarnService to showUserStrikes");
                 await WarnService.showUserStrikes(command.args[0], message);
             }
 
@@ -106,6 +108,17 @@ async function channelCommands(command, message, client) {
             // The command will remove the user from the strike database
             break;
 
+        case "unkick":
+            console.log("Command was unkick... Validating username...");
+            validateUsername(command.args[0]);
+            console.log("Asking KickService to getKickedUser...");
+            const foundUserToUnkick = await KickService.getKickedUser(command.args[0]);
+            if (foundUserToUnkick) {
+                console.log("Found this kickedUser: ", foundUserToUnkick)
+                await KickService.unkickUser(foundUserToUnkick);
+                await message.channel.send(`${foundUserToUnkick.username} has been un-kicked.`);
+            }
+            break;
         case "kicked":
             validateUsername(command.args[0]);
             const searchKickedUser = command.args[0];

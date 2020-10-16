@@ -1,6 +1,9 @@
 const mongoose = require('../../config/mongoose');
 const __ = require('colors');
 const ModActions = require('../actions/ModActions');
+const {
+    mongo
+} = require('mongoose');
 
 async function kickUser(username, message) {
     console.log("Uh oh! 3 strikes! Kick service kicking the user!");
@@ -71,9 +74,16 @@ async function getKickedUser(username) {
 
 }
 
+async function unkickUser(user) {
+    console.log("KickService deleting user: ", user);
+    await user.delete();
+}
+
+
 module.exports = {
     kickUser,
     listKicked,
     removeUserFromGuild,
-    getKickedUser
+    getKickedUser,
+    unkickUser
 }

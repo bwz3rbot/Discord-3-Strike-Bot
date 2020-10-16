@@ -93,6 +93,7 @@ The environment variables listed below are stored in your __pw.env__ file. You w
 <strong>TAG_COMMAND</strong> A name for the tag-me command to listen for. Should be set to something similar to 'agree' if you're having your users read a set of rules, or something more specific to your sub. It must be a single word command. It receives no arguments. This function __will not be limited to admin use like the others.__\
 <strong>ROLE_TO_ASSIGN</strong> The name of the role assigned by the tag-me command. This named role is used to grant access to your server. Its primary purpose is to have your users agree to a set of instructions before being allowed access to the rest of your content.\
 <strong>WELCOME_MESSAGE</strong> A brief message that will be sent to the tag-me channel after a user is given a role.
+<strong>WELCOME_MESSAGE</strong> A message that will be displayed to users who attempt to use the `tag` command while being in the list users previously kicked from the guild.
 
 <strong>If you do not wish to use the tag-me function, simply set the TAG_ME_CHANNEL variable to a channel name that does not exist within your server and the bot will overlook it. Enabling the tag-me channel for your server is explained in the [final section](https://github.com/web-temps/Discord-3-Strike-Bot#tag-me-) of this guide.</strong><br>
 
@@ -115,6 +116,7 @@ TAG_ME_CHANNEL="tag-me"
 TAG_COMMAND="agree"
 ROLE_TO_ASSIGN="user"
 WELCOME_MESSAGE="Welcome to the server!"
+UNWELCOME_MESSAGE="You are not welcome here."
 ```
 
 # Installing <a name = "installing"></a>
@@ -208,13 +210,16 @@ One more thing to note is that simply storing all your backups in the __backups_
 The `tag-me` command is used to host a welcome message on your server.\
 It allows you to create a set of rules that your users must agree to before accessing the rest of your content.
 
-How to use the tag-me function?
+How to use the tag-me function:
 1. First, if you have not done so yet, go into your server channel settings, and restrict `(@everyone)` to have no permissions on your server.
 2. Now create a new role which must be allowed base access to your sub. That means a minumum of being able to __Read Text Channels__.
 3. Now create 2 seperate channels in a new category. Name the category something along the lines of ***Welcome*** or ***Server Info***. You are going to create a set of rules or a welcome message that your users must agree to or atleast read before unlocking the other channels of your server.
 4. One channel is to be an inital welcome page where you will place your created message. This is the only page a user can see before they use the tag-me function, so they are forced to read it! Set this channel's permissions for `(@everyone)` to be: <strong>Read Messages & Read Message History</strong> only.
 5.  The other page should be a *command channel*. This is the <strong>tag-me</strong> channel. There should be some information at the bottom of the welcome channel on how to use this channel. @everyone permissions here must be set as <strong>Read Messages & Send Messages</strong>. Nothing more.
 6. When a user calls the tag command from this channel, they will be assigned the role you define in your __pw.env__ file under: __ROLE_TO_ASSIGN__
+
+
+This bot will store the data of all users who have been previously kicked from the guild through the `warn` command. If a user attempts to use the `tag-me` command while being in the list of kicked users, they will not be awarded the role.
 
 
 <br>
