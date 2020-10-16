@@ -189,7 +189,11 @@ On success, you should see a message that looks exactly like this one:
 
 # Backing Up Your Data <a name = "backup"></a>
 
-It's strongly recommended that you back up your database! That is where all your user data is stored and if anything happens to it, its not going to be a good time for your server. Luckily it is very easy to copy the database directory from one folder to another for safe keeping. If anything were to happen to your data, you may simply delete the bad folder and paste in the backup documents. It should all work out just fine. <strong>You should also note that you should never attempt this backup method with the database running. The files will not be correctly copied and your existing data may not work right afterward!</strong>
+It's strongly recommended that you back up your database! That is where all your user data is stored and if anything happens to it, its not going to be a good time for your server. Luckily it is very easy to copy the database directory from one folder to another for safe keeping. If anything were to happen to your data, you may simply delete the bad folder and paste in the backup documents. It should all work out just fine.
+
+You should also note that you should never attempt this backup method while the database is running. The files will not be correctly copied and your existing data may not work right afterward!
+
+One more thing to note is that simply storing all your backups in the __backups__ folder I had you make in the previous step, isn't going to cut it if you really want to be 100% sure the the data will be safe. You should probably keep it on another device altogether. Best if you kept it in cloud storage somewhere in case something were to happen to your personal storage device. Cloud storage is always the safest bet when keeping important data that your server relies on. It rules out the possibility of your own hardware failing.
 
 
 
