@@ -78,23 +78,25 @@ The environment variables listed below are stored in your pw.env file. You will 
 
 -----
 
-<strong>TOKEN</strong> is taken from the Developer Portal when you created your app.\
-<strong>LIMIT_TO_CHANNELS</strong> are the names of the channels you wish the bot to receive commands on. They must be in the form of a comma sperated list for the bot to understand what this variable means.\
-<strong>COMMAND_PREFIX</strong> a single character you wish to prefix commands with.\
-<strong>ACTIVITY_TYPE</strong> must be set to either PLAYING, LISTENING or WATCHING for the bot to function correctly as defined [here](https://discord.js.org/#/docs/main/stable/typedef/ActivityType). The bot does not allow a user to use STREAMING or CUSTOM_STATUS.\
-<strong>ACTIVITY_NAME</strong> displays with the activity type.\
-<strong>SET_USERNAME</strong> The username you wish the bot to display.\
-<strong>ADMIN_ROLE_NAME</strong> The user role needed to activate the bot.\
-<strong>GUEST_ADMIN_ROLE_NAME</strong> A secondary role that can also use the bot.\
+<strong>TOKEN</strong> Taken from the [Developer Portal](https://discord.com/developers/applications) when you created your app.\
+<strong>LIMIT_TO_CHANNELS</strong> The names of every you wish the bot to listen for commands on. This variable must formatted as a list seperated by commas.\
+<strong>COMMAND_PREFIX</strong> A single character you wish to prefix commands with.\
+<strong>ACTIVITY_TYPE</strong> Must be set to either PLAYING, LISTENING or WATCHING for the bot to function correctly as defined [here](https://discord.js.org/#/docs/main/stable/typedef/ActivityType). The bot __does not allow__ for a user to use the STREAMING or CUSTOM_STATUS activity types.\
+<strong>ACTIVITY_NAME</strong> Displays along with the activity type.\
+<strong>SET_USERNAME</strong> The username you wish your bot to display.\
+<strong>ADMIN_ROLE_NAME</strong> The role a user is required to have in order to activate the bot.\
+<strong>GUEST_ADMIN_ROLE_NAME</strong> A secondary user role which also has access to the bot.\
 <strong>TAG_ME_CHANNEL</strong> The name of the channel for the tag-me function to run on.\
-<strong>TAG_COMMAND</strong> The command needed to activate the tag-me function. Should be set to something like 'agree' if you're having your users read rules, or something specific to your sub. A single word command. No arguments. This function __will not be limited to admin use.__\
-<strong>ROLE_TO_ASSIGN</strong> The name of the role given by the tag-me command. This named role is used to grant access to your server. Its purpose is to have your users agree to a set of instructions before being able to continue on.
+<strong>TAG_COMMAND</strong> A name for the tag-me command to listen for. Should be set to something similar to 'agree' if you're having your users read a set of rules, or something more specific to your sub. It must be a single word command. It receives no arguments. This function __will not be limited to admin use like the others.__\
+<strong>ROLE_TO_ASSIGN</strong> The name of the role assigned by the tag-me command. This named role is used to grant access to your server. Its primary purpose is to have your users agree to a set of instructions before being allowed access to the rest of your content.
 
-<strong>If you do not wish to use the tag-me function, simply set the TAG_ME_CHANNEL variable to a channel name that does not exist within your server and the bot will overlook it. Setting up the tag-me function for your server is explained below.</strong><br>
+<strong>If you do not wish to use the tag-me function, simply set the TAG_ME_CHANNEL variable to a channel name that does not exist within your server and the bot will overlook it. Enabling the tag-me channel for your server is explained in the [final section](https://github.com/web-temps/Discord-3-Strike-Bot#tag-me-) of this guide.</strong><br>
 
 
 _____
-### Below is an example of how to fill out your environment variables. This exact file can be found within the root directory and is called *pw.envEXAMPLE*. By filling in your data and removing EXAMPLE from the end of the filename, you are enabling your bot to work with your server.
+### Below is an example of how you should fill out your environment variables.
+
+This exact file can be found within the root directory and is called *pw.envEXAMPLE*. By filling in your token here, you are allowing the code to connect to discord under your bots' credentials. By removing EXAMPLE from the end of the filename, the application will know where to find the file and will use the variables you have set in it to log in and run the bot. If any of these variables are filled out incorrectly, the application may throw an error and stop executing. Be sure you have followed all the instructions carefully and then fill in these fields:
 
 ```
 TOKEN='NzY2Mjg4NTk3OTU4NjU2MDIw.X4hL3g.a9lHHyS-blGotkeUwhjgFPQDucA'
@@ -112,7 +114,7 @@ ROLE_TO_ASSIGN="user"
 
 # Installing <a name = "installing"></a>
 
-First, you must install Node.js and MongoDB. Official download links for Node can be found [here](https://nodejs.org/en/download/). And MongoDB [here](https://docs.mongodb.com/manual/administration/install-community/).
+First, you must install Node.js and MongoDB. You can use the official download links to get [Node.js here](https://nodejs.org/en/download/) and [MongoDB here](https://docs.mongodb.com/manual/administration/install-community/).
 
 To check that Node and Mongo have been correctly installed, run these commands:
 ```
@@ -123,7 +125,7 @@ $ mongo --version
 ```
 
 
-After Node and MongoDB are installed, and you have your Application created in the Discord Developer's Portal, download the source code on this page and unzip it.
+Once Node and Mongo are installed, and you have your ppplication created in the [Discord Developer's Portal](https://discord.com/developers/applications), download the source code on this page and unzip it.
 
 
 
@@ -136,19 +138,19 @@ $ npm i
 ```
 
 These two commands will
-1. Create a directory for which store your database
-2. Install the dependencies as defined in the package.json file
+1. Create a directory for which store your data
+2. Install all the nececary dependencies as defined in the [package.json](https://github.com/web-temps/Discord-3-Strike-Bot/blob/main/package.json) file
 
-Once these packages are completely installed, you will be only one step away from running your
+Once these packages are completely installed, you will be only one step away from running your bot for the very first time!
 
 # Usage <a name = "usage"></a>
 
-Once all the initial setup of your environment variables is complete, and you've installed the dependencies, you are ready to run the bot! Before running the bot you must, of course, have the database running. It is very important that you always run the database from the same location. This is why I have included a simple .bat (for windows users) and .sh (for linux) file for you to run from, which will ensure the consistency of the data.
+Now that you've generated a token for a new app, your environment variables have bet set, and you've installed the dependencies, you are ready to run the bot! Before running the bot you must, of course, start the database instance. It is very important that you always run the database from the same location. This is why I have included a simple .bat (for windows users) and .sh (for linux) file for you to run from, which will ensure consistency of the data.
 
 ## Windows <a name = "windows"></a>
 
-Windows users can simply click mongo.bat to run the database server instance in the correct location for the bot to find the files.\
-Once mongo is up and running, you may use run.bat to run the bot.
+Windows users simply click mongo.bat to start the database in the correct location.\
+Once mongo is up and running, you may use run.bat to start the bot.
 
 ## Mac and Linux <a name = "mac-linux"></a>
 
@@ -159,12 +161,12 @@ $ sudo chmod +x run.sh
 ```
 Now that you've given execute permission on both files for your machine, you can use them to run the bot.
 
-First open a terminal window and CD into the bot. The database needs to be running in its own window before starting the bot. Use this command to run the MongoDB server instance in the correct location:
+First open a terminal window and CD into the bot. The database needs to be running in its own window before running the bot. Use this command to run the MongoDB server instance in the correct location:
 ```
 $ ./mongo.sh
 ```
 
-With the database running, you may now open up another terminal window and run this command to start the bot:
+With the database up and running, you may open another terminal window and run this command to start the bot:
 ```
 $ ./run.sh
 ```
