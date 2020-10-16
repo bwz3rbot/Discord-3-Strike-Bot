@@ -2,20 +2,12 @@ const mongoose = require('../../config/mongoose');
 const dateformat = require('dateformat');
 const KickService = require('./KickService');
 const EmbedBuilder = require('../../common/util/EmbedBuilder');
-const {
-    KickedUserModel
-} = require('../../config/mongoose');
-const {
-    mongo
-} = require('mongoose');
-
 class Warning {
     constructor(reason) {
         this.time = dateformat(new Date());
         this.reason = reason
     }
 }
-
 class User {
     constructor(username) {
         this.username = username
@@ -47,9 +39,7 @@ async function checkUserExistsWithinGuild(username, message) {
 async function warnUser(username, reason, message) {
     await checkUserExistsWithinGuild(username, message);
     // First check if user exists witin the database
-    let user = await mongoose.StrikedUserModel.findOne({
-        username: username
-    });
+    let user = await mongoose.getStrikedUser(username);
 
     // If user does not exist, create a new user object
 
@@ -70,21 +60,15 @@ async function warnUser(username, reason, message) {
     }
 
 
-    const strikedUser = await mongoose.StrikedUserModel.findOne({
-        username: username
-    })
+    const strikedUser = await mongoose.getStrikedUser(username);
     // If user has 3 strikes, kick them from the server
     let embed;
     if (strikedUser.strikeCount >= 3) {
         await KickService.kickUser(username, message);
-        const kickedUser = await mongoose.KickedUserModel.findOne({
-            username: username
-        });
+        const kickedUser = await mongoose.getKickedUser(username);
         embed = EmbedBuilder.warningEmbed("You have been kicked!", kickedUser);
     } else {
-        const warnedUser = await mongoose.StrikedUserModel.findOne({
-            username: username
-        });
+        const warnedUser = await mongoose.getStrikedUser(username);
         embed = EmbedBuilder.warningEmbed("You have been warned!", warnedUser);
     }
     // Respond to message with an embed
@@ -96,12 +80,11 @@ async function warnUser(username, reason, message) {
 
 // List Specific Users's Strikes
 async function showUserStrikes(username, message) {
-    const foundUser = await mongoose.StrikedUserModel.findOne({
-        username: username
-    });
+    const foundUser = await mongoose.getStrikedUser(username);
     if (foundUser == null) {
         throw new Error("That user doesn't exist within the list of previously warned users! Try searching for them in the Kicked User directory by using the !kicked command;");
     } else {
+        console.log("WarnService Building embed for this user: ", foundUser);
         const embed = EmbedBuilder.userEmbed(foundUser);
         await message.channel.send(embed);
     }
@@ -118,9 +101,7 @@ async function listStriked(message) {
 async function clearWarnings(user, message) {
     console.log("Clearing all warnings for user: ", user);
 
-    const foundUser = await mongoose.StrikedUserModel.findOne({
-        username: user
-    });
+    const foundUser = await mongoose.getStrikedUser(user);
     if (foundUser == null) {
         throw new Error("That user doesn't have any strikes!;")
     }

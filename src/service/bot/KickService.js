@@ -8,16 +8,12 @@ const {
 async function kickUser(username, message) {
     console.log("Uh oh! 3 strikes! Kick service kicking the user!");
 
-    const userToKick = await mongoose.StrikedUserModel.findOne({
-        username: username
-    });
+    const userToKick = await mongoose.getStrikedUser(username);
 
     // Before creating a new instance, we need to check if one exists already.
     // If an instance already exists, add both lifetimeStrikes together and concat both .warnings arrays
 
-    const possibleUser = await mongoose.KickedUserModel.findOne({
-        username: username
-    });
+    const possibleUser = await mongoose.getKickedUser(username);
     if (possibleUser) {
         // Here is where we concat the arrays and add the lifetimeStrikes together...
         possibleUser.lifetimeStrikes += userToKick.lifetimeStrikes;
@@ -49,9 +45,7 @@ async function listKicked() {
 }
 
 async function getKickedUser(username) {
-    const foundUser = await mongoose.KickedUserModel.findOne({
-        username: username
-    });
+    const foundUser = await mongoose.getKickedUser(username);
     if (foundUser == null) {
         throw new Error("That user doesn't seem to be in the database!;");
     }

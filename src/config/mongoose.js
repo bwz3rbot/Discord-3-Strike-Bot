@@ -48,11 +48,27 @@ async function getStrikedAsync(username) {
     });
 }
 
+async function getStrikedUser(username) {
+    const user = await StrikedUserModel.findOne({
+        username: username
+    });
+    return user;
+}
+
+async function getKickedUser(username) {
+    const user = await KickedUserModel.findOne({
+        username: username
+    });
+    return user;
+}
+
 module.exports = {
     db,
     connect,
     StrikedUserModel,
     KickedUserModel,
     getKickedAsync,
-    getStrikedAsync
+    getStrikedAsync,
+    getKickedUser,
+    getStrikedUser
 }
