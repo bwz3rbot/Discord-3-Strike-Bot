@@ -31,7 +31,7 @@ This bot allows for an administrator to set a custom command prefix. This means 
 
 
 ## List <a name = "warn.list"></a>
-### A server admin can pull up a user's warning history by using the `list` command
+### A server admin can pull up a user's warning history by using the `list` command.
 `$list <@username>`
 
 ## Pardon <a name = "warn.pardon"></a>
@@ -39,7 +39,7 @@ This bot allows for an administrator to set a custom command prefix. This means 
 `$pardon <@username>`
 
 ## Kicked <a name = "warn.kicked"></a>
-### A server admin can use this command to see the history of a user who has been previously kicked from the guild through using the `warn` command
+### A server admin can use this command to see the history of a user who has been previously kicked from the guild through using the `warn` command.
 `$kicked <@username>`
 
 ## Unkick <a name = "warn.unkick"></a>
@@ -47,5 +47,5 @@ This bot allows for an administrator to set a custom command prefix. This means 
 `$unkick <@username>`
 
 ## Help <a name = "warn.help"></a>
-### To access the help embed, use the `help` command:
+### To access the help embed, use the `help` command.
 `$help`
