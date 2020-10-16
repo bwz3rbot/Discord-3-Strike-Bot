@@ -34,6 +34,19 @@ These instructions will get you a copy of the project up and running on your loc
 # Prerequisites <a name = "pres"></a>
 
 
+This project runs on Node.js and uses a MongoDB database. You'll need to download and install both before moving on.
+You can use the official download links to get [Node.js here](https://nodejs.org/en/download/) and [MongoDB here](https://docs.mongodb.com/manual/administration/install-community/).
+
+To check that Node and Mongo have been correctly installed, run these commands:
+```
+$ node --version
+> v12.18.3
+$ mongo --version
+> v4.4.0
+```
+
+
+
 -----
 \
 The first step in installing and using a bot is creating an application in the [Discord Developer Portal](https://discord.com/developers/applications).
@@ -98,7 +111,7 @@ __This bot requires the following permissions to run:__
 
 This bot is ***highly customizable***
 -----
-The environment variables listed below are stored in your __pw.env__ file. You will notice a single file that exists within the root directory of this codebase called __pw.envEXAMPLE.__ Here is where you can customize your bot. The only requirements are that you input the correct token for your bot and ACTIVITY_TYPE is limited to only 3 choices. But other than that, you have a number of variables to choose from to make the bot fit your server's personality a bit more. See below for definitions of what they all mean.
+The environment variables listed below are stored in your __pw.env__ file. You will notice a single file that exists within the root directory of this codebase called __pw.envEXAMPLE.__ Here is where you can customize your bot. The only requirements are that you input the correct token for your bot and ACTIVITY_TYPE is limited to only 3 choices. Besides those limitations, you have a number of variables to choose from to make the bot fit your server's personality. See below for definitions of what they all mean.
 
 -----
 
@@ -143,20 +156,7 @@ UNWELCOME_MESSAGE="You are not welcome here."
 # Installing <a name = "installing"></a>
 
 
-This project runs on Node.js and uses a MongoDB database. You'll need to download and install both before moving on.
-You can use the official download links to get [Node.js here](https://nodejs.org/en/download/) and [MongoDB here](https://docs.mongodb.com/manual/administration/install-community/).
-
-To check that Node and Mongo have been correctly installed, run these commands:
-```
-$ node --version
-> v12.18.3
-$ mongo --version
-> v4.4.0
-```
-
-
-Once Node and Mongo are installed, and you have your application created in the [Discord Developer's Portal](https://discord.com/developers/applications), download the source code on this page and unzip it to a safe spot on your hard drive.
-
+Once Node and Mongo are installed, you have your application created in the [Discord Developer's Portal](https://discord.com/developers/applications), and the bot is invited to your server, download the source code on this page and unzip it to a safe spot on your hard drive. Fill in your environment variables as explained above.
 
 
 Before running the app, you need to use npm to install packages required to run a Discord bot, and also to access the database.
