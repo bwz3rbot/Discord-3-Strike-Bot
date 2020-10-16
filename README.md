@@ -18,9 +18,9 @@
 
 # About <a name = "about"></a>
 
-This Discord bot will scan a set of user defined channels for commands. It only accepts commands from users with administrative roles on your server. It allows for two seperate roles to use the bot. Administrators of the server may call on the bot to give users a *warning* in the form of a message embed. 3 seperate warnings without having been pardoned will result in an instant kick from the server. An administrator can also use the bot to *pardon* a user of their strikes at any time. This pardon function resets the strike count of a user to 0.
+This Discord bot will scan a set of user defined channels for commands. It only accepts commands from users with administrative roles on your server. It allows for two seperate roles to use the bot. Administrators of the server may call on the bot to give users a ***warning*** in the form of a message embed. 3 seperate warnings without having been ***pardoned*** will result in the user being kicked from the server. An administrator can use the bot to ***pardon*** a user of their current strike level at any time. This pardon function resets the strike count of a user to 0.
 
-The bot also comes with a *tag-me* feature which allows you to have a welcome message or landing page for your server. It scans a tag-me channel to assign users a base user role, allowing them access to the rest of your content. If you decide you do not wish to use this feature, you may simply edit the environment variable TAG_ME_CHANNEL to equal a channel name that does not exist within your server.
+The bot also comes with a ***tag-me*** feature which allows a server owner to have a welcome message landing page, or ***rules page*** for your server. It scans a __tag-me__ channel to assign users a role, allowing them access to the rest of your content. If you decide you do not wish to use this feature, you may simply edit the environment variable TAG_ME_CHANNEL to equal a channel name that does not exist within your server.
 
 # Getting Started <a name = "getting_started"></a>
 
@@ -40,41 +40,41 @@ Once you have Mongo and Node installed on your system, Head on over to the [Disc
 
 <br>
 
-1. Click the New Application button to create a new bot.
+1. Click the `New Application` button to create a new bot.
 
 <img src="https://i.imgur.com/RS7HNEk.png">
 
 <br>
 <br>
 
-2. Give it a name and click create
+2. Give it a name and click `Create`
 
 <img src="https://i.imgur.com/n0lJjsW.png">
 
 <br>
 <br>
 
-3. Navigate to the Bot tab and click Add Bot.
+3. Navigate to the Bot tab and click to `Add Bot`.
 
 <img src="https://i.imgur.com/N3L6bln.png">
 
 <br>
 <br>
 
-4. Now Click to Reveal Token. You'll need this token to authenticate your bot in the next step.
+4. Now `Click to Reveal Token`. You'll need this token to authenticate your bot in the next step.
 
 <img src='https://i.imgur.com/X115w03.png'>
 
 <br>
 <br>
 
-<strong>Never share this token with anyone! It is used to authenticate your bot! Basically it is your bot's password.</strong> Anyone with access to this token will have *full* control of the bot. That means that if you have granted the bot an admin role on your server (which you would need to for it to work), __anyone with access to your token will have admin rights on your server__. You can probably imagine that this is not something you really want to happen! No problem, though as if the token ever does in fact become leaked, you may simply go back to the [Developer Portal](https://discord.com/developers/applications) on your bot's page and click the button to __*regenerate*__ a new token for your bot. Paste it back into your pw.env file (which is explained below) and you're good to go!
+<strong>Never share this token with anyone! It is used to authenticate your bot! Basically it is your bot's password.</strong> Anyone with access to this token will have *full* control of the bot. That means that if you have granted the bot an admin role on your server (which you would need to for it to work), __anyone with access to your token will have admin rights on your server__. You can probably imagine that this is not something you really want to happen! No problem, though as if the token ever does in fact become leaked, you may simply go back to the [Developer Portal](https://discord.com/developers/applications) on your bot's page and click the button to __*regenerate*__ a new token for your bot. Paste it back into your `pw.env` file (which is explained below) and you're good to go!
 
 # Environment Variables <a name = "env_var"></a>
 
-This bot is <strong>highly customizable</strong>.
+This bot is ***highly customizable***
 -----
-The environment variables listed below are stored in your pw.env file. You will notice a single file that exists within the root directory of this codebase called __pw.envEXAMPLE.__ Here is where you can customize your bot. The only requirements are that you input the correct token for your bot and ACTIVITY_TYPE is limited to only 3 choices. But other than that, you have a number of variables to choose from to make the bot fit your server's personality a bit more. See below for definitions of what they all mean.
+The environment variables listed below are stored in your `pw.env` file. You will notice a single file that exists within the root directory of this codebase called __pw.envEXAMPLE.__ Here is where you can customize your bot. The only requirements are that you input the correct token for your bot and ACTIVITY_TYPE is limited to only 3 choices. But other than that, you have a number of variables to choose from to make the bot fit your server's personality a bit more. See below for definitions of what they all mean.
 
 -----
 
@@ -96,7 +96,7 @@ The environment variables listed below are stored in your pw.env file. You will 
 _____
 ### Below is an example of how you should fill out your environment variables.
 
-This exact file can be found within the root directory and is called *pw.envEXAMPLE*. By filling in your token here, you are allowing the code to connect to discord under your bots' credentials. By removing EXAMPLE from the end of the filename, the application will know where to find the file and will use the variables you have set in it to log in and run the bot. If any of these variables are filled out incorrectly, the application may throw an error and stop executing. Be sure you have followed all the instructions carefully and then fill in these fields:
+This exact file can be found within the root directory and is called *`pw.envEXAMPLE`*. By filling in your token here, you are allowing the code to connect to discord under your bots' credentials. By removing EXAMPLE from the end of the filename, the application will know where to find the file and will use the variables you have set in it to log in and run the bot. If any of these variables are filled out incorrectly, the application may throw an error and stop executing. Be sure you have followed all the instructions carefully and then fill in these fields:
 
 ```
 TOKEN='NzY2Mjg4NTk3OTU4NjU2MDIw.X4hL3g.a9lHHyS-blGotkeUwhjgFPQDucA'
@@ -149,8 +149,8 @@ Now that you've generated a token for a new app, your environment variables have
 
 ## Windows <a name = "windows"></a>
 
-Windows users simply click mongo.bat to start the database in the correct location.\
-Once mongo is up and running, you may use run.bat to start the bot.
+Windows users simply click `mongo.bat` to start the database in the correct location.\
+Once mongo is up and running, you may use `run.bat` to start the bot.
 
 ## Mac and Linux <a name = "mac-linux"></a>
 
@@ -189,46 +189,49 @@ It's strongly recommended that you back up your database! That is where all your
 
 
 # Functions And Commands <a name = "functions"></a>
-
-## Tag-Me <a name = "tag-me"></a>
-
-The tag-me command is used to host a welcome message on your server.\
-It allows you to create a set of rules for your users to have to agree to before accessing the rest of your content.
-
-How to use the tag-me function?
-1. First, if you have not done so yet, go into your server channel settings, and restrict @everyone to have no permissions.
-2. Create a role that can have base access to your sub. That means the ability to <strong>Read Text Channels & See Voice Channels, Send Messages, etc...</strong>
-3. Now create 2 seperate channels in a <strong>Server Info</strong> category.
-4. One should be an inital welcome page where you can customize your rules/welcome message to say what you like. This is the only page a user can see before they use the tag-me function, so they are forced to read it! Set this pages permissions for @everyone to <strong>Read Messages & Read Message History</strong> only.
-5.  The other page should be a *command channel*. This is the <strong>tag-me</strong> channel. There should be some information at the bottom of the welcome channel on how to use this channel. @everyone permissions here must be set as <strong>Read Messages & Send Messages</strong>. Nothing more.
-6. When a user calls the tag command from this channel, they will be assigned the role you define in your pw.env file under: ROLE_TO_ASSIGN
+- ### [Commands Quick Reference](https://github.com/web-temps/Discord-3-Strike-Bot/blob/main/COMMANDS.MD#discord-3-strike-warning-system-command-reference)<a name = "quick-ref"></a>
+<br>
 
 
+>## Tag-Me <a name = "tag-me"></a>
 
-## Warning System <a name = "warning"></a>
+>The `tag-me` command is used to host a welcome message on your server.\
+It allows you to create a set of rules that your users must agree to before accessing the rest of your content.
+>
+>How to use the tag-me function?
+>1. First, if you have not done so yet, go into your server channel settings, and restrict `(@everyone)` to have no permissions on your server.
+>2. Now create a new role which must be allowed base access to your sub. That means a minumum of being able to __Read Text Channels__.
+>3. Now create 2 seperate channels in a new category. Name the category something along the lines of ***Welcome*** or ***Server Info***. You are going to create a set of rules or a welcome message that your users must agree to or atleast read before unlocking the other channels of your server.
+>4. One channel is to be an inital welcome page where you will place your created message. This is the only page a user can see before they use the tag-me function, so they are forced to read it! Set this channel's permissions for `(@everyone)` to be: <strong>Read Messages & Read Message History</strong> only.
+>5.  The other page should be a *command channel*. This is the <strong>tag-me</strong> channel. There should be some information at the bottom of the welcome channel on how to use this channel. @everyone permissions here must be set as <strong>Read Messages & Send Messages</strong>. Nothing more.
+>6. When a user calls the tag command from this channel, they will be assigned the role you define in your `pw.env` file under: __ROLE_TO_ASSIGN__
 
-The warning system works by receiving a warn command by an admin of the server, and querying the database for existing user data. You must provide an @link to a user that is a current member of the guild for the function to proceed. Upon calling the command a user will be selected from the database. The user will be given a warning in the form of an embed and will receive a strike.
 
-To warn a user use this command syntax:
+<br>
+
+>## Warning System <a name = "warning"></a>
+
+>The warning system works by receiving a warn command by an admin of the server, and querying the database for existing user data. You must provide an @link to a user that is a current member of the guild for the function to proceed. Upon calling the command a user will be selected from the database. The user will be given a warning in the form of an embed and will receive a strike.
+
+To warn a user, use the `warn` command:
 ```
-!warn @username reason for warning
-```
-
-To list a users warning history:
-```
-!list @username
-```
-
-This will display an embed containing the users full warning history and their current number of strikes. The total lifetime strikes is also available, and can be much higher than 3 if they have been given leniency in the past.
-
-To remove all strikes from a user, an admin may call this command:
-```
-!pardon @username
+!warn <@username> <reason for warning>
 ```
 
-All strikes will be removed from the user. The user's lifetime strikes will, ofcourse remain unchanged, and the previous warning reasons will remain visible for an admin to bring up at any time.
-
-To see the history of a user that has been previously kicked from the guild, use the *kicked* command:
+To list a users' warning history, use the `list` command:
 ```
-!kicked @username
+!list <@username>
+```
+>This command will display an embed containing a users most recent warning history up to a maximum of 8 warnings. It will display their current strike level (0-2) and their total lifetime strikes. The total lifetime strikes is the total amount of warnings a user has been given in the past. Users may have their current strike level set back to zero by an admin through the use of the `pardon` command.
+
+To remove all strikes from a user, use the `pardon` command:
+```
+!pardon <@username>
+```
+
+>All strikes will be removed from the user. The user's lifetime strikes will, ofcourse remain unchanged, and the previous warning reasons will remain visible for an admin to bring up at any time.
+
+To see the history of a user that has been previously kicked from the guild, use the `kicked` command:
+```
+!kicked <@username>
 ```
