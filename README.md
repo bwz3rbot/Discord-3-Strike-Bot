@@ -18,17 +18,21 @@
 
 # About <a name = "about"></a>
 
-This Discord bot will scan a set of user defined channels for commands. It only accepts commands from users with administrative roles on your server. It allows for two seperate roles to use the bot. Administrators of the server may call on the bot to give users a *warning* in the form of a message embed. 3 seperate warnings without having been pardoned will result in an instant kick from the server. An administrator can also use the bot to *pardon* a user of their strikes at any time. This pardon function resets strikes to 0.
+This Discord bot will scan a set of user defined channels for commands. It only accepts commands from users with administrative roles on your server. It allows for two seperate roles to use the bot. Administrators of the server may call on the bot to give users a *warning* in the form of a message embed. 3 seperate warnings without having been pardoned will result in an instant kick from the server. An administrator can also use the bot to *pardon* a user of their strikes at any time. This pardon function resets the strike count of a user to 0.
 
 The bot also comes with a *tag-me* feature which allows you to have a welcome message or landing page for your server. It scans a tag-me channel to assign users a base user role, allowing them access to the rest of your content. If you decide you do not wish to use this feature, you may simply edit the environment variable TAG_ME_CHANNEL to equal a channel name that does not exist within your server.
 
 # Getting Started <a name = "getting_started"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+These instructions will get you a copy of the project up and running on your local machine.
 
 # Prerequisites <a name = "pres"></a>
 
-This bot runs on [Node.js](https://nodejs.org/en/download/) and [MongoDB](https://docs.mongodb.com/manual/administration/install-community/). 
+This bot runs on Node.js with a MongoDB database. Be sure that you download and install both of these products carefully and correctly. The install procedures of both are rather straightforward, especially for Windows users. See below for links to the downloads:
+
+[Official MongoDB Download and Installation Instructions](https://docs.mongodb.com/manual/administration/install-community/)\
+[Official Node.JS Download](https://nodejs.org/en/download/)
+
 
 Once you have Mongo and Node installed on your system, Head on over to the [Discord Developer Portal](https://discord.com/developers/applications) and create a new application.
 
