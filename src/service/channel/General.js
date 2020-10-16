@@ -14,18 +14,21 @@ async function on(message, client) {
     let filteredChannel = channelFilter(message.channel.name);
     if (!filteredChannel) {
         // If channel is not validated, return from function
+        console.log("INVALID CHANNEL".red);
         return
     }
     // Check if request was from an admin or guest admin
     const isAdminRequest = ModActions.checkRoleAdmin(message);
     const isGuestAdminRequest = ModActions.checkRoleGuestAdmin(message);
     if (isAdminRequest || isGuestAdminRequest) {
+        console.log("VALID REQUEST FROM ADMIN ROLE. PROCEEDING".green);
         // Check that message received was not from self or another bot
         if (!(message.author === client.user)) {
             // Build a command and process it through the command switch
             let command = cmd(message.content);
             if (command) {
                 try {
+                    
                     await channelCommands(command, message, client);
                 } catch (err) {
                     // If any errors are thrown, reply to the message with an error message
@@ -33,6 +36,9 @@ async function on(message, client) {
                 }
             }
         }
+    } else {
+        console.log("NOT VALID ADMIN.".red);
+
     }
 }
 
@@ -65,7 +71,7 @@ async function limitToChannel(command, message, client) {
 // Command and function definitions:
 async function channelCommands(command, message, client) {
     console.log("Going through the channel commands, first validating the username...")
-    console.dir(command)
+    console.log('Command was: ', command);
     switch (command.directive) {
         case "warn":
             validateUsername(command.args[0]);

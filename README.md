@@ -14,6 +14,9 @@
 - [Functions And Commands](#functions)
     - [Tag-Me](#tag-me)
     - [Warning System](#warning)
+- [Examples](#example)
+    - [Tag-Me](#example.tag)
+    - [Warning System](#example.warning)
 
 
 # About <a name = "about"></a>
@@ -88,7 +91,8 @@ The environment variables listed below are stored in your __pw.env__ file. You w
 <strong>GUEST_ADMIN_ROLE_NAME</strong> A secondary user role which also has access to the bot.\
 <strong>TAG_ME_CHANNEL</strong> The name of the channel for the tag-me function to run on.\
 <strong>TAG_COMMAND</strong> A name for the tag-me command to listen for. Should be set to something similar to 'agree' if you're having your users read a set of rules, or something more specific to your sub. It must be a single word command. It receives no arguments. This function __will not be limited to admin use like the others.__\
-<strong>ROLE_TO_ASSIGN</strong> The name of the role assigned by the tag-me command. This named role is used to grant access to your server. Its primary purpose is to have your users agree to a set of instructions before being allowed access to the rest of your content.
+<strong>ROLE_TO_ASSIGN</strong> The name of the role assigned by the tag-me command. This named role is used to grant access to your server. Its primary purpose is to have your users agree to a set of instructions before being allowed access to the rest of your content.\
+<strong>WELCOME_MESSAGE</strong> A brief message that will sent to the tag-me channel after a user is given a role.
 
 <strong>If you do not wish to use the tag-me function, simply set the TAG_ME_CHANNEL variable to a channel name that does not exist within your server and the bot will overlook it. Enabling the tag-me channel for your server is explained in the [final section](https://github.com/web-temps/Discord-3-Strike-Bot#tag-me-) of this guide.</strong><br>
 
@@ -110,6 +114,7 @@ GUEST_ADMIN_ROLE_NAME="Guest Admin"
 TAG_ME_CHANNEL="tag-me"
 TAG_COMMAND="agree"
 ROLE_TO_ASSIGN="user"
+WELCOME_MESSAGE="Welcome to the server!"
 ```
 
 # Installing <a name = "installing"></a>
@@ -235,3 +240,37 @@ To see the history of a user that has been previously kicked from the guild, use
 ```
 !kicked <@username>
 ```
+
+# Example Output From The Bot <a name="example"></a>
+
+# Example Output From The Tag-Me Function<a name="example.tag"></a>
+
+### Your __Welcome Page__ should look something like this:
+<img src='https://i.imgur.com/p0DNa3j.png'>
+<br>
+
+### Before using the `tag` command, no channels are visable to the user:
+<img src='https://i.imgur.com/ds7bP7d.png'>
+<br>
+
+### After using the `tag` command, the channels appear unlocked to the new user!
+<img src='https://i.imgur.com/kS0rY5r.png'>
+<br>
+<br>
+
+# Example Output From The Warning System<a name="example.warning"></a>
+
+### Example output from the `help` command:
+<img src='https://i.imgur.com/dc0TPDo.png'>
+<br>
+
+### Example output from the `warn` command:
+<img src='https://i.imgur.com/6wwbZWW.png'>
+<br>
+
+### Example output from the `warn` command when a user has 2 strikes:
+<img src='https://i.imgur.com/vwSiirj.png'>
+<br>
+
+### Example output from the `pardon` command:
+<img src='https://i.imgur.com/H5BYOKG.png'>
