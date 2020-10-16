@@ -7,14 +7,14 @@
     - [Prerequisites](#getting_started)
     - [Environment Variables](#env_var)
     - [Installing](#installing)
-- [Usage](#usage)
+- [Running](#running)
     - [Windows](#windows)
     - [Mac And Linux](#mac-linux)
 - [Backing Up Your Data](#backup)
-- [Functions And Commands](#functions)
+- [Usage](#usage)
     - [Tag-Me](#tag-me)
     - [Warning System](#warning)
-- [Examples](#example)
+- [Example Output](#example)
     - [Tag-Me](#example.tag)
     - [Warning System](#example.warning)
 
@@ -152,7 +152,7 @@ These two commands will
 
 Once these packages are completely installed, you will be only one step away from running your bot.
 
-# Usage <a name = "usage"></a>
+# Running <a name = "running"></a>
 
 Now that you've generated a token for a new app, your environment variables have bet set, and you've installed the dependencies, you are ready to run the bot! Before running the bot you must, of course, start the database instance. It is very important that you always run the database from the same location. This is why I have included a simple .bat (for windows users) and .sh (for linux) file for you to run from, which will ensure consistency of the data.
 
@@ -200,8 +200,8 @@ One more thing to note is that simply storing all your backups in the __backups_
 
 
 
-# Functions And Commands <a name = "functions"></a>
-- ### [Commands Quick Reference](https://github.com/web-temps/Discord-3-Strike-Bot/blob/main/COMMANDS.MD#discord-3-strike-warning-system-command-reference)<a name = "quick-ref"></a>
+# Usage <a name = "usage"></a>
+>### [Commands Quick Reference](https://github.com/web-temps/Discord-3-Strike-Bot/blob/main/COMMANDS.MD#discord-3-strike-warning-system-command-reference)
 <br>
 
 
@@ -260,7 +260,8 @@ To access the `help` embed with a list of commands, just send an empty command p
 ```
 !
 ```
-# Example Output From The Bot <a name="example"></a>
+# Example Output<a name="example"></a>
+<br>
 
 # Example Output From The Tag-Me Function<a name="example.tag"></a>
 
