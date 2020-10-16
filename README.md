@@ -168,7 +168,7 @@ $ mkdir backups
 $ npm i
 ```
 
-These two commands will
+These three commands will
 1. Create a directory for which store your data
 2. Create a directory where you can store your database backups
 3. Install all the nececary dependencies as defined in the [package.json](https://github.com/web-temps/Discord-3-Strike-Bot/blob/main/package.json) file
