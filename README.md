@@ -90,11 +90,11 @@ The environment variables listed below are stored in your pw.env file. You will 
 <strong>TAG_COMMAND</strong> The command needed to activate the tag-me function. Should be set to something like 'agree' if you're having your users read rules, or something specific to your sub. A single word command. No arguments. This function __will not be limited to admin use.__\
 <strong>ROLE_TO_ASSIGN</strong> The name of the role given by the tag-me command. This named role is used to grant access to your server. Its purpose is to have your users agree to a set of instructions before being able to continue on.
 
-<strong>If you do not wish to use the tag-me function, simply set the TAG_ME_CHANNEL variable to a channel name that does not exist within your server and the bot will overlook it.</strong><br>
+<strong>If you do not wish to use the tag-me function, simply set the TAG_ME_CHANNEL variable to a channel name that does not exist within your server and the bot will overlook it. Setting up the tag-me function for your server is explained below.</strong><br>
 
-## Read more about using the tag-me function [here]().
+
 _____
-### Below is an example of how to fill out your environment variables. This exact file can be found in the root directory and is called *pw.envEXAMPLE*. By filling in your data and removing EXAMPLE from the end of the filename, you are enabling your bot to work with your server.
+### Below is an example of how to fill out your environment variables. This exact file can be found within the root directory and is called *pw.envEXAMPLE*. By filling in your data and removing EXAMPLE from the end of the filename, you are enabling your bot to work with your server.
 
 ```
 TOKEN='NzY2Mjg4NTk3OTU4NjU2MDIw.X4hL3g.a9lHHyS-blGotkeUwhjgFPQDucA'
@@ -114,7 +114,7 @@ ROLE_TO_ASSIGN="user"
 
 First, you must install Node.js and MongoDB. Official download links for Node can be found [here](https://nodejs.org/en/download/). And MongoDB [here](https://docs.mongodb.com/manual/administration/install-community/).
 
-To check that node and mongo have been installed correctly run these commands:
+To check that Node and Mongo have been correctly installed, run these commands:
 ```
 $ node --version
 > v12.18.3
@@ -129,47 +129,59 @@ After Node and MongoDB are installed, and you have your Application created in t
 
 Before running the app, you must use npm to install the packages needed to run a Discord bot and access the database.
 
-First open your terminal, and cd into the folder containing the source code you just downloaded. Now run this command from within the root folder.
+To do so, first you must open your terminal, and cd into the folder containing the source code you just downloaded. Now run this command from the root folder of the codebase:
 ```
 $ mkdir database
 $ npm i
 ```
 
-Once these packages are completely installed, you are one step away from being able to run your bot.
+These two commands will
+1. Create a directory for which store your database
+2. Install the dependencies as defined in the package.json file
 
-
+Once these packages are completely installed, you will be only one step away from running your
 
 # Usage <a name = "usage"></a>
 
-Once all the initial setup of your environment variables is complete, and you've installed the dependencies, you are ready to run the bot! Before running the bot you must have the database running. It is very important that you always run the database from the same location. This is why I have included a simple .bat (for windows users) and .sh (for linux) file for you to run from, which will ensure the consistency of the data.
+Once all the initial setup of your environment variables is complete, and you've installed the dependencies, you are ready to run the bot! Before running the bot you must, of course, have the database running. It is very important that you always run the database from the same location. This is why I have included a simple .bat (for windows users) and .sh (for linux) file for you to run from, which will ensure the consistency of the data.
 
 ## Windows <a name = "windows"></a>
 
 Windows users can simply click mongo.bat to run the database server instance in the correct location for the bot to find the files.\
-Once mongo is up and running, use run.bat to run the bot.
+Once mongo is up and running, you may use run.bat to run the bot.
 
 ## Mac and Linux <a name = "mac-linux"></a>
 
-Linux and mac users must use the .sh versions of the files. You must also first set them as executable before using. To do so run these commands:
+Mac and Linux users must use the .sh versions of the files. You must also first set them as executable before using. To do so run these commands:
 ```
 $ sudo chmod +x mongo.sh
 $ sudo chmod +x run.sh
 ```
-Now that you've given execute permission on both files, you can use them to run the bot.\
-In one terminal window, you will run the database:
+Now that you've given execute permission on both files for your machine, you can use them to run the bot.
+
+First open a terminal window and CD into the bot. The database needs to be running in its own window before starting the bot. Use this command to run the MongoDB server instance in the correct location:
 ```
 $ ./mongo.sh
 ```
-In another you will run the bot:
+
+With the database running, you may now open up another terminal window and run this command to start the bot:
 ```
 $ ./run.sh
+```
+
+On success, you should see a message that looks exactly like this one:
+```
+> Attempting to connect to MongoDB...
+> Successfully connected to MongoDB.
+> Attempting to connect to Discord...
+> Successfully Connected as ⚾ThreeStrikeBot�#1852 | Thu Oct 15 2020 20:16:21
 ```
 
 
 
 # Backing Up Your Data <a name = "backup"></a>
 
-It's strongly recommended that you back up your database! That is where all your user data is stored and if anything happens to it, its not going to be a good time for your server. Luckily it's very easy to just copy the database directory from the folder to another and keep it safe. If anything happens to your bot's database, just delete the corrupt one and paste in the backup. It should all work out just fine. <strong>You should also note that you should never attempt this while the database is running. The files will not be correctly copied and will possibly destroy your data.</strong>
+It's strongly recommended that you back up your database! That is where all your user data is stored and if anything happens to it, its not going to be a good time for your server. Luckily it is very easy to copy the database directory from one folder to another for safe keeping. If anything were to happen to your data, you may simply delete the bad folder and paste in the backup documents. It should all work out just fine. <strong>You should also note that you should never attempt this backup method with the database running. The files will not be correctly copied and your existing data may not work right afterward!</strong>
 
 
 
