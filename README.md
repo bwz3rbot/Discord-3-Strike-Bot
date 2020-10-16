@@ -54,7 +54,7 @@ Once you have Mongo and Node installed on your system, Head on over to the [Disc
 
 <img src='https://i.imgur.com/X115w03.png'>
 
-<strong>Never share this token with anyone! It is used to authenticate your bot!</strong> If the password does get leaked, you may simply go back to the Developer Portal on your bot's page and click the button to __*Regnerate*__ or make a new token for your bot. Paste it back into your pw.env file and you will be good to go!
+<strong>Never share this token with anyone! It is used to authenticate your bot! Basically it is your bot's password.</strong> If the code does get leaked, you may simply go back to the Developer Portal on your bot's page and click the button to __*regenerate*__ a new token for your bot. Paste it back into your pw.env file and you're good to go!
 
 # Environment Variables <a name = "env_var"></a>
 
