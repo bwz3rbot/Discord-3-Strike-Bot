@@ -26,7 +26,7 @@ async function channelCommands(command, message) {
             await ModActions.assignRole(message);
             break;
         default:
-            await message.channel.send(`Type \`!${process.env.TAG_COMMAND}\` to be assigned THE role of ${process.env.ROLE_TO_ASSIGN}.`);
+            await message.channel.send(`Type \`!${process.env.TAG_COMMAND}\` to be assigned the role of ${process.env.ROLE_TO_ASSIGN}.`);
             break;
     }
 

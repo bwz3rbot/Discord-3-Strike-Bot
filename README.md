@@ -26,9 +26,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 # Prerequisites <a name = "pres"></a>
 
-This bot runs on [Node.js](https://nodejs.org/en/download/) and MongoDB. Be sure you download the correct versions for your system.
+This bot runs on [Node.js](https://nodejs.org/en/download/) and [MongoDB](https://docs.mongodb.com/manual/administration/install-community/). 
 
-Head on over to the [Discord Developer Portal](https://discord.com/developers/applications) and create a new application.
+Once you have Mongo and Node installed on your system, Head on over to the [Discord Developer Portal](https://discord.com/developers/applications) and create a new application.
 
 
 
@@ -48,17 +48,17 @@ Head on over to the [Discord Developer Portal](https://discord.com/developers/ap
 
 <img src='https://i.imgur.com/X115w03.png'>
 
-<strong>Never share this token with anyone! It is used to authenticate your bot!</strong> If it slips out, its not the end of the world at any rate. Simply go back to this page and click Regnerate to make a new token for your bot. Paste it back into your pw.env file and you will be good to go!
+<strong>Never share this token with anyone! It is used to authenticate your bot!</strong> If the password does get leaked, you may simply go back to the Developer Portal on your bot's page and click the button to __*Regnerate*__ or make a new token for your bot. Paste it back into your pw.env file and you will be good to go!
 
 # Environment Variables <a name = "env_var"></a>
 
 This bot is <strong>highly customizable</strong>.
 -----
-The environment variables listed below are stored in your pw.env file. You will notice a single file in the root directory called pw.envEXAMPLE. Here is where you can customize your bot. The only requirements are that you input the correct token for your bot and ACTIVITY_TYPE is limited to only 3 choices. But other than that, you can choose many things to make the bot fit your server more. See below for definitions of what they all mean.
+The environment variables listed below are stored in your pw.env file. You will notice a single file that exists within the root directory of this code called __pw.envEXAMPLE.__ Here is where you can customize your bot. The only requirements are that you input the correct token for your bot and ACTIVITY_TYPE is limited to only 3 choices. But other than that, you have a number of variables to choose from to make the bot fit your server's personality a bit more. See below for definitions of what they all mean.
 
 
 <strong>TOKEN</strong> is taken from the Developer Portal when you created your app.\
-<strong>CHANNEL_NAME</strong> is the name of the channel you wish the bot to receive commands on.\
+<strong>LIMIT_TO_CHANNELS</strong> are the names of the channels you wish the bot to receive commands on. They must be in the form of a comma sperated list for the bot to understand what this variable means.\
 <strong>COMMAND_PREFIX</strong> a single character you wish to prefix commands with.\
 <strong>ACTIVITY_TYPE</strong> must be set to either PLAYING, LISTENING or WATCHING for the bot to function correctly as defined [here](https://discord.js.org/#/docs/main/stable/typedef/ActivityType). The bot does not allow a user to use STREAMING or CUSTOM_STATUS.\
 <strong>ACTIVITY_NAME</strong> displays with the activity type.\
@@ -73,7 +73,7 @@ The environment variables listed below are stored in your pw.env file. You will 
 
 ```
 TOKEN='NzY2Mjg4NTk3OTU4NjU2MDIw.X4hL3g.a9lHHyS-blGotkeUwhjgFPQDucA'
-CHANNEL_NAME="command-channel"
+LIMIT_TO_CHANNELS="command-channel,general-chat,welcome"
 COMMAND_PREFIX="!"
 ACTIVITY_TYPE="WATCHING"
 ACTIVITY_NAME="you! 👀"
@@ -81,7 +81,7 @@ SET_USERNAME="⚾ThreeStrikeBot🤖"
 ADMIN_ROLE_NAME="admin"
 GUEST_ADMIN_ROLE_NAME="Guest Admin"
 TAG_ME_CHANNEL="tag-me"
-TAG_COMMAND="tag"
+TAG_COMMAND="agree"
 ROLE_TO_ASSIGN="user"
 ```
 

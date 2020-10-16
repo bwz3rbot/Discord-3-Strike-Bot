@@ -1,5 +1,5 @@
 TOKEN=''
-CHANNEL_NAME="command-channel"
+LIMIT_TO_CHANNELS="command-channel,general-chat,welcome"
 COMMAND_PREFIX="!"
 ACTIVITY_TYPE="WATCHING"
 ACTIVITY_NAME="you! 👀"
@@ -7,5 +7,5 @@ SET_USERNAME="⚾ThreeStrikeBot🤖"
 ADMIN_ROLE_NAME="admin"
 GUEST_ADMIN_ROLE_NAME="Guest Admin"
 TAG_ME_CHANNEL="tag-me"
-TAG_COMMAND="tag"
+TAG_COMMAND="agree"
 ROLE_TO_ASSIGN="user"

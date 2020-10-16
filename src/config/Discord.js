@@ -8,7 +8,7 @@ const channels = require('../service/channel/ChannelList').channels;
 client.on("ready", async () => {
     // Generate timesteamp for console log
     dateTime = dateFormat(new Date())
-    console.log(`Successfully Connected as ${client.user.tag} | ${dateTime}`.green)
+    console.log(`Successfully Connected as ${client.user.tag} | ${dateTime}`.green);
     await client.user.setPresence({ // Set Presence
             activity: {
                 type: process.env.ACTIVITY_TYPE,
@@ -16,7 +16,6 @@ client.on("ready", async () => {
             },
             status: 'idle'
         })
-        .then(console.log) // Show Presence In Console
         .catch(console.error) // Log any errors
         await client.user.setUsername(process.env.SET_USERNAME);
 });

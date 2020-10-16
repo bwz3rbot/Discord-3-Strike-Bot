@@ -8,30 +8,60 @@ const {
 const KickService = require('../bot/KickService');
 const WarnService = require('../bot/WarnService');
 async function on(message, client) {
+
+    console.log(message.member)
+    // Check if channel was on the list of channels in pw.env
+    let filteredChannel = channelFilter(message.channel.name);
+    if (!filteredChannel) {
+        // If channel is not validated, return from function
+        return
+    }
+    // Check if request was from an admin or guest admin
     const isAdminRequest = ModActions.checkRoleAdmin(message);
     const isGuestAdminRequest = ModActions.checkRoleGuestAdmin(message);
     if (isAdminRequest || isGuestAdminRequest) {
-        console.log("admin validated");
-        if (!(message.author === client.user) &&
-            message.channel.name === process.env.CHANNEL_NAME) {
+        // Check that message received was not from self or another bot
+        if (!(message.author === client.user)) {
+            // Build a command and process it through the command switch
             let command = cmd(message.content);
             if (command) {
                 try {
                     await channelCommands(command, message, client);
                 } catch (err) {
+                    // If any errors are thrown, reply to the message with an error message
                     await replyWithErrorMessage(message, err.message);
                 }
+            }
+        }
+    }
+}
 
+const channelFilter = function (channel) {
+    const userChannels = process.env.LIMIT_TO_CHANNELS.split(",");
+    let validatedChannelsList = userChannels.filter(ch => ch.trim() == channel);
+    console.log("Validated Channels: ", validatedChannelsList);
+    if (validatedChannelsList.length > 0) {
+        console.log("validatedChannelsList was not null! Returning this value: ", validatedChannelsList[0]);
+        return validatedChannelsList[0]
+    }
+}
+
+
+async function limitToChannel(command, message, client) {
+    if (!(message.author === client.user) &&
+        message.channel.name === process.env.CHANNEL_NAME) {
+        let command = cmd(message.content);
+        if (command) {
+            try {
+                await channelCommands(command, message, client);
+            } catch (err) {
+                await replyWithErrorMessage(message, err.message);
             }
 
-
         }
-    } else {
-        console.log("non admin user");
     }
-    
-
 }
+
 // Command and function definitions:
 async function channelCommands(command, message, client) {
     console.log("Going through the channel commands, first validating the username...")
@@ -39,7 +69,6 @@ async function channelCommands(command, message, client) {
     switch (command.directive) {
         case "warn":
             validateUsername(command.args[0]);
-            console.log("command was warn");
             const warnUser = command.args[0];
             const reason = command.args[1];
             if (reason == null) {
@@ -47,32 +76,24 @@ async function channelCommands(command, message, client) {
             }
             const reasonArray = command.args.slice(1, command.args.length);
             const warnReson = reasonArray.join(' ');
-            console.log("args were: ", warnUser, warnReson);
             await WarnService.warnUser(warnUser, warnReson, message);
             break;
         case "list":
-            console.log("was command list");
-            console.log("args were: ", command.args);
-            console.log("validating username...")
             validateUsername(command.args[0]);
-
             if (!command.args[0]) {
-                console.log("no args. listing all striked users.");
                 throw new Error("Command must contain a user to search for!;");
             } else {
-                console.log("user arg present. showing only one user strikes.");
                 await WarnService.showUserStrikes(command.args[0], message);
             }
 
             // Command should list current warnings on a specific user
             break;
-        case "clear":
-            console.log("Command was clear.");
+        case "pardon":
+            console.log("command was pardon. command:", command);
             validateUsername(command.args[0]);
             const clearUser = command.args[0];
-            console.log("clearing user strikes: ", clearUser);
             if (clearUser) {
-                console.log("Asking Warn service to clear warnings for user...");
+                console.log("Asking warn service to clear the warnings...")
                 await WarnService.clearWarnings(clearUser, message);
             }
             // Command should be called with a single argument of @username
@@ -80,12 +101,9 @@ async function channelCommands(command, message, client) {
             break;
 
         case "kicked":
-            console.log("command was kicked");
             validateUsername(command.args[0]);
             const searchKickedUser = command.args[0];
             const foundKickedUser = await KickService.getKickedUser(searchKickedUser);
-            console.log("found this previously kicked user: ", foundKickedUser);
-
             if (searchKickedUser) {
                 const kickedUserEmbed = EmbedBuilder.userEmbed(foundKickedUser);
                 await message.channel.send(kickedUserEmbed);
@@ -93,37 +111,38 @@ async function channelCommands(command, message, client) {
             break;
 
         default:
-            message.channel.send(`\`\`\`
-            !warn <@username> <reason> (gives a user a warning!)
-            !list <@username> (displays a users warning history)
-            !clear <@username> (removes all strikes from a user)
-            !kicked <@username> (displays warning history of a previously kicked user)
-            \`\`\``)
+            console.log("Building embed...");
+            const helpEmbed = EmbedBuilder.helpEmbed([{
+                syntax: `!warn <@username> <reason>`,
+                description: `gives a user a warning`
+            }, {
+                syntax: `!list <@username>`,
+                description: `displays a user's warning history`
+            }, {
+                syntax: `!pardon <@username>`,
+                description: `clears all strikes against a specific user`
+            }, {
+                syntax: `!kicked <@username>`,
+                description: `checks the database for a previously kicked user and displays their history`
+            }]);
+            console.log("sending embed...");
+            await message.channel.send(helpEmbed);
             break;
     }
 }
 
 const validateUsername = function (username) {
-    console.log("Validating username: ", username);
-    console.log("creating regex..");
     let nameRegex = new RegExp(/[“\<\@\!”]/);
-    console.log("the regex: ", nameRegex);
-    console.log("Testing name against the regex... Name: ", username);
     let valid = nameRegex.test(username);
-
     if (!valid) {
-        console.log("username invalid! throwing error...")
         throw new Error("That's not a valid username!;");
     } else {
-        console.log("Username valid. Continuing!");
         return true;
     }
-
 }
 
 async function replyWithErrorMessage(message, err) {
     const msg = err.substring(0, err.indexOf(";"));
-    console.log("Replying with error message: ", msg);
     await message.channel.send(`${msg}`);
 }
 
